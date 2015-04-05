@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.6/phpunit.xsd"
+    bootstrap="tests/bootstrap.php"
+    colors="true"
+    beStrictAboutTestsThatDoNotTestAnything="true"
+    beStrictAboutOutputDuringTests="true"
+    beStrictAboutTestSize="true"
+    beStrictAboutTodoAnnotatedTests="true"
+    checkForUnintentionallyCoveredCode="true"
+    >
     <testsuites>
         <testsuite name="FioApi Test Suite">
             <directory>tests/FioApi/</directory>

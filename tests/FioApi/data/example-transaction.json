@@ -1,0 +1,73 @@
+{
+  "column22": {
+    "value": 1111111111,
+    "name": "ID pohybu",
+    "id": 22
+  },
+  "column0": {
+    "value": "2015-03-30+0200",
+    "name": "Datum",
+    "id": 0
+  },
+  "column1": {
+    "value": 127.00,
+    "name": "Objem",
+    "id": 1
+  },
+  "column14": {
+    "value": "CZK",
+    "name": "Měna",
+    "id": 14
+  },
+  "column2": {
+    "value": "214498596",
+    "name": "Protiúčet",
+    "id": 2
+  },
+  "column10": null,
+  "column3": {
+    "value": "2100",
+    "name": "Kód banky",
+    "id": 3
+  },
+  "column12": {
+    "value": "Banka, a.s.",
+    "name": "Název banky",
+    "id": 12
+  },
+  "column4": null,
+  "column5": {
+    "value": "0",
+    "name": "VS",
+    "id": 5
+  },
+  "column6": null,
+  "column7": {
+    "value": "HUJER MARTIN",
+    "name": "Uživatelská identifikace",
+    "id": 7
+  },
+  "column16": {
+    "value": "Platba eshop",
+    "name": "Zpráva pro příjemce",
+    "id": 16
+  },
+  "column8": {
+    "value": "Bezhotovostní příjem",
+    "name": "Typ",
+    "id": 8
+  },
+  "column9": null,
+  "column18": null,
+  "column25": {
+    "value": "Comment? Comment!",
+    "name": "Komentář",
+    "id": 25
+  },
+  "column26": null,
+  "column17": {
+    "value": 1111122222,
+    "name": "ID pokynu",
+    "id": 17
+  }
+}

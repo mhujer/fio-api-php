@@ -1,4 +1,23 @@
 {
+  "name": "mhujer/fio-api-php",
+  "version": "1.0.0",
+  "type": "library",
+  "description": "Fio API PHP implemention",
+  "keywords": [
+    "fio",
+    "banking",
+    "api"
+  ],
+  "homepage": "https://github.com/mhujer/fio-api-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Martin Hujer",
+      "email": "mhujer@gmail.com",
+      "homepage": "http://www.martinhujer.cz/",
+      "role": "Developer"
+    }
+  ],
   "require": {
     "php": "~5.4",
     "ext-curl": "*",
@@ -11,5 +30,8 @@
     "psr-4": {
       "FioApi\\": "src/FioApi"
     }
+  },
+  "scripts": {
+    "test": "vendor\\bin\\phpunit"
   }
 }
