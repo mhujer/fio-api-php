@@ -40,8 +40,16 @@ class TransactionList
      * @param int $idLastDownload
      * @param Account $account
      */
-    protected function __construct($openingBalance, $closingBalance, \DateTime $dateStart, \DateTime $dateEnd, $idFrom, $idTo, $idLastDownload, Account $account)
-    {
+    protected function __construct(
+        $openingBalance,
+        $closingBalance,
+        \DateTime $dateStart,
+        \DateTime $dateEnd,
+        $idFrom,
+        $idTo,
+        $idLastDownload,
+        Account $account
+    ) {
         $this->openingBalance = $openingBalance;
         $this->closingBalance = $closingBalance;
         $this->dateStart = $dateStart;

@@ -68,8 +68,7 @@ class Transaction
         $performedBy,
         $comment,
         $paymentOrderId
-    )
-    {
+    ) {
         $this->id = $id;
         $this->date = $date;
         $this->amount = $amount;

@@ -34,7 +34,9 @@ class UrlBuilder
     public function setToken($token)
     {
         if (!$token) {
-            throw new MissingTokenException('Token is required for ebanking API calls. You can get one at https://www.fio.cz/.');
+            throw new MissingTokenException(
+                'Token is required for ebanking API calls. You can get one at https://www.fio.cz/.'
+            );
         }
         $this->token = $token;
     }
@@ -54,4 +56,3 @@ class UrlBuilder
         );
     }
 }
-

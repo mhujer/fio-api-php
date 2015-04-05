@@ -45,5 +45,4 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
         $transactionList = $downloader->downloadSince(new \DateTime('-1 week'));
         $this->assertInstanceOf('\FioApi\TransactionList', $transactionList);
     }
-
 }

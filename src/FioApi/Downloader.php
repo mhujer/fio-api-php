@@ -70,7 +70,11 @@ class Downloader
                 throw new TooGreedyException('You can use one token for API call every 30 seconds', $e->getCode(), $e);
             }
             if ($e->getCode() == 500) {
-                throw new InternalErrorException('Server returned 500 Internal Error (probably invalid token?)', $e->getCode(), $e);
+                throw new InternalErrorException(
+                    'Server returned 500 Internal Error (probably invalid token?)',
+                    $e->getCode(),
+                    $e
+                );
             }
             throw $e;
         }
