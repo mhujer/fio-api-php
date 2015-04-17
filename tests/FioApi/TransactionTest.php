@@ -10,9 +10,18 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
 
         $transaction = Transaction::create($transaction);
 
-        $this->assertEquals(127, $transaction->getAmount());
-        $this->assertEquals('CZK', $transaction->getCurrency());
-        $this->assertEquals('214498596', $transaction->getSenderAccountNumber());
-        $this->assertEquals('2100', $transaction->getSenderBankCode());
+        $this->assertSame(127.0, $transaction->getAmount());
+        $this->assertSame('CZK', $transaction->getCurrency());
+        $this->assertSame('214498596', $transaction->getSenderAccountNumber());
+        $this->assertSame('2100', $transaction->getSenderBankCode());
+        $this->assertSame('0', $transaction->getVariableSymbol());
+        $this->assertSame(null, $transaction->getConstantSymbol());
+        $this->assertSame(null, $transaction->getSpecificSymbol());
+        $this->assertSame('Banka, a.s.', $transaction->getSenderBankName());
+        $this->assertSame('HUJER MARTIN', $transaction->getUserIdentity());
+        $this->assertSame('Platba eshop', $transaction->getUserMessage());
+        $this->assertSame(null, $transaction->getPerformedBy());
+        $this->assertSame('Comment? Comment!', $transaction->getComment());
+        $this->assertSame(1111122222, $transaction->getPaymentOrderId());
     }
 }
