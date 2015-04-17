@@ -45,4 +45,11 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
         $transactionList = $downloader->downloadSince(new \DateTime('-1 week'));
         $this->assertInstanceOf('\FioApi\TransactionList', $transactionList);
     }
+
+    public function testDownloaderSetCertificatePath()
+    {
+        $downloader = new Downloader('validToken');
+        $downloader->setCertificatePath('foo.pem');
+        $this->assertEquals('foo.pem', $downloader->getCertificatePath());
+    }
 }
