@@ -38,7 +38,6 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \GuzzleHttp\Exception\BadResponseException
      * @expectedExceptionCode 418
-     * @expectedExceptionMessage Client error response [url] https://www.fio.cz/ib_api/rest/periods/validToken/2015-04-10/2015-04-17/transactions.json [status code] 418 [reason phrase]
      */
     public function testUnknownResponseCodePassesOriginalException()
     {
