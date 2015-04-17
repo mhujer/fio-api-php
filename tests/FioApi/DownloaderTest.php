@@ -35,6 +35,20 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
         $downloader->downloadSince(new \DateTime('-1 week'));
     }
 
+    /**
+     * @expectedException \GuzzleHttp\Exception\BadResponseException
+     * @expectedExceptionCode 418
+     * @expectedExceptionMessage Client error response [url] https://www.fio.cz/ib_api/rest/periods/validToken/2015-04-10/2015-04-17/transactions.json [status code] 418 [reason phrase]
+     */
+    public function testUnknownResponseCodePassesOriginalException()
+    {
+        $downloader = new Downloader('validToken');
+        $downloader->getClient()->getEmitter()->attach(new Mock([
+            new Response(418),
+        ]));
+        $downloader->downloadSince(new \DateTime('-1 week'));
+    }
+
     public function testDownloaderDownloadsData()
     {
         $downloader = new Downloader('validToken');
