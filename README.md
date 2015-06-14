@@ -34,3 +34,11 @@ Bugs and feature request are tracked on [GitHub](https://github.com/mhujer/fio-a
 Author
 ------
 Martin Hujer - <mhujer@gmail.com> - <http://www.martinhujer.cz>
+
+Changelog
+----------
+## 1.0.3 (2015-06-14)
+- updated root certificate (Root 3) as the Fio changed it on 2014-05-26
+
+## 1.0.0 (2015-04-05)
+- initial release
