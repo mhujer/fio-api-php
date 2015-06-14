@@ -39,7 +39,7 @@ class Downloader
         }
 
         //Key downloaded from https://www.geotrust.com/resources/root-certificates/
-        return __DIR__ . '/keys/Equifax_Secure_Certificate_Authority.pem';
+        return __DIR__ . '/keys/GeoTrust_Primary_CA.pem';
     }
 
     /**
