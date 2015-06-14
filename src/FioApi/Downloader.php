@@ -3,7 +3,7 @@ namespace FioApi;
 
 use FioApi\Exceptions\InternalErrorException;
 use FioApi\Exceptions\TooGreedyException;
-use GuzzleHttp\Client as Guzzle;
+use Psr\Http\Message\ResponseInterface;
 
 class Downloader
 {
@@ -19,9 +19,10 @@ class Downloader
     /**
      * @param string $token
      */
-    public function __construct($token)
+    public function __construct($token, \GuzzleHttp\ClientInterface $client = null)
     {
         $this->urlBuilder = new UrlBuilder($token);
+        $this->client = $client;
     }
 
     /**
@@ -43,12 +44,12 @@ class Downloader
     }
 
     /**
-     * @return Guzzle
+     * @return \GuzzleHttp\ClientInterface
      */
     public function getClient()
     {
         if (!$this->client) {
-            $this->client = new Guzzle();
+            $this->client = new \GuzzleHttp\Client();
         }
         return $this->client;
     }
@@ -64,7 +65,8 @@ class Downloader
         $url = $this->urlBuilder->buildPeriodsUrl($from, $to);
 
         try {
-            $response = $client->get($url, ['verify' => $this->getCertificatePath()]);
+            /** @var ResponseInterface $response */
+            $response = $client->request('get', $url, ['verify' => $this->getCertificatePath()]);
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
             if ($e->getCode() == 409) {
                 throw new TooGreedyException('You can use one token for API call every 30 seconds', $e->getCode(), $e);
@@ -79,10 +81,7 @@ class Downloader
             throw $e;
         }
 
-        return TransactionList::create($response->json([
-            'object' => true,
-            'big_int_strings' => true,
-        ])->accountStatement);
+        return TransactionList::create(json_decode($response->getBody())->accountStatement);
     }
 
     /**

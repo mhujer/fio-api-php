@@ -25,7 +25,7 @@ foreach ($transactionList->getTransactions() as $transaction) {
 
 Requirements
 ------------
-Fio API PHP works with PHP 5.4 or above (or HHVM)
+Fio API PHP works with PHP 5.5, PHP 5.6 or PHP 7.
 
 Submitting bugs and feature requests
 ------------------------------------
@@ -37,6 +37,10 @@ Martin Hujer - <mhujer@gmail.com> - <http://www.martinhujer.cz>
 
 Changelog
 ----------
+## 2.0.0 (2015-06-14)
+- upgraded to Guzzle 6
+- support for PHP 5.4 dropped (as Guzzle 6 requires PHP 5.5+)
+
 ## 1.0.3 (2015-06-14)
 - updated root certificate (Root 3) as the Fio changed it on 2014-05-26
 
