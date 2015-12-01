@@ -4,6 +4,8 @@
 
 Fio bank REST API implementation in PHP. It allows you to download and iterate through account balance changes.
 
+[There is a Symfony Bundle](https://github.com/mhujer/fio-api-bundle) for using this library in a Symfony app.
+
 Usage
 ----
 1. Install the latest version with `composer require mhujer/fio-api-php`
