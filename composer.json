@@ -1,6 +1,5 @@
 {
   "name": "mhujer/fio-api-php",
-  "version": "2.0.0",
   "type": "library",
   "description": "Fio API PHP implemention",
   "keywords": [
