@@ -51,6 +51,9 @@ class Transaction
     /** @var string */
     protected $paymentOrderId;
 
+    /** @var string */
+    protected $specification;
+
     protected function __construct(
         $id,
         $date,
@@ -67,7 +70,8 @@ class Transaction
         $transactionType,
         $performedBy,
         $comment,
-        $paymentOrderId
+        $paymentOrderId,
+        $specification
     ) {
         $this->id = $id;
         $this->date = $date;
@@ -85,6 +89,7 @@ class Transaction
         $this->performedBy = $performedBy;
         $this->comment = $comment;
         $this->paymentOrderId = $paymentOrderId;
+        $this->specification = $specification;
     }
 
     /**
@@ -109,7 +114,8 @@ class Transaction
             $data->column8->value, //Typ
             !empty($data->column9) ? $data->column9->value : null, //Provedl
             !empty($data->column25) ? $data->column25->value : null, //Komentář
-            !empty($data->column17) ? $data->column17->value : null //ID pokynu
+            !empty($data->column17) ? $data->column17->value : null, //ID pokynu
+            !empty($data->column18) ? $data->column18->value : null //Upřesnění
         );
     }
 
@@ -239,5 +245,13 @@ class Transaction
     public function getPaymentOrderId()
     {
         return $this->paymentOrderId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSpecification()
+    {
+        return $this->specification;
     }
 }

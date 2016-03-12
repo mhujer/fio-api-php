@@ -58,7 +58,11 @@
     "id": 8
   },
   "column9": null,
-  "column18": null,
+  "column18": {
+    "value": "1500.00 EUR",
+    "name": "Upřesnění",
+    "id": 18
+  },
   "column25": {
     "value": "Comment? Comment!",
     "name": "Komentář",
