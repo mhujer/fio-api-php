@@ -35,10 +35,14 @@ Bugs and feature request are tracked on [GitHub](https://github.com/mhujer/fio-a
 
 Author
 ------
-Martin Hujer - <mhujer@gmail.com> - <http://www.martinhujer.cz>
+Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 
 Changelog
 ----------
+## 2.1.0 (2016-03-12)
+- [#1](https://github.com/mhujer/fio-api-php/pull/1): updated default GeoTrust certificate (@soukiii)
+- [#1](https://github.com/mhujer/fio-api-php/pull/1): added `specification` field in transaction (@soukiii)
+
 ## 2.0.0 (2015-06-14)
 - upgraded to Guzzle 6
 - support for PHP 5.4 dropped (as Guzzle 6 requires PHP 5.5+)
