@@ -39,6 +39,10 @@ class Downloader
             return $this->certificatePath;
         }
 
+        if (class_exists('\Kdyby\CurlCaBundle\CertificateHelper')) {
+            return \Kdyby\CurlCaBundle\CertificateHelper::getCaInfoFile();
+        }
+
         //Key downloaded from https://www.geotrust.com/resources/root-certificates/
         return __DIR__ . '/keys/Geotrust_PCA_G3_Root.pem';
     }
