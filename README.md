@@ -39,6 +39,10 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 
 Changelog
 ----------
+## 2.2.0 (2016-03-13)
+- [#2](https://github.com/mhujer/fio-api-php/pull/2): added [Kdyby/CurlCaBundle](https://github.com/Kdyby/CurlCaBundle)
+ 	as an optional dependency (@mhujer)
+
 ## 2.1.0 (2016-03-12)
 - [#1](https://github.com/mhujer/fio-api-php/pull/1): updated default GeoTrust certificate (@soukiii)
 - [#1](https://github.com/mhujer/fio-api-php/pull/1): added `specification` field in transaction (@soukiii)
