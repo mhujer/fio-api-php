@@ -1,4 +1,5 @@
 <?php
+
 namespace FioApi;
 
 class TransactionList
@@ -31,14 +32,14 @@ class TransactionList
     protected $transactions = [];
 
     /**
-     * @param float $openingBalance
-     * @param float $closingBalance
+     * @param float     $openingBalance
+     * @param float     $closingBalance
      * @param \DateTime $dateStart
      * @param \DateTime $dateEnd
-     * @param int $idFrom
-     * @param int $idTo
-     * @param int $idLastDownload
-     * @param Account $account
+     * @param int       $idFrom
+     * @param int       $idTo
+     * @param int       $idLastDownload
+     * @param Account   $account
      */
     protected function __construct(
         $openingBalance,
@@ -70,6 +71,7 @@ class TransactionList
 
     /**
      * @param \stdClass $data Data from JSON API response
+     *
      * @return TransactionList
      */
     public static function create(\stdClass $data)

@@ -1,4 +1,5 @@
 <?php
+
 namespace FioApi;
 
 use FioApi\Exceptions\MissingTokenException;
@@ -44,12 +45,13 @@ class UrlBuilder
     /**
      * @param \DateTime $from
      * @param \DateTime $to
+     *
      * @return string
      */
     public function buildPeriodsUrl(\DateTime $from, \DateTime $to)
     {
         return sprintf(
-            self::BASE_URL . 'periods/%s/%s/%s/transactions.json',
+            self::BASE_URL.'periods/%s/%s/%s/transactions.json',
             $this->getToken(),
             $from->format('Y-m-d'),
             $to->format('Y-m-d')
