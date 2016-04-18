@@ -2,7 +2,6 @@
 
 namespace FioApi;
 
-use FioApi\Exceptions;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -50,7 +49,7 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
     public function testDownloaderDownloadsData()
     {
         $handler = HandlerStack::create(new MockHandler([
-            new Response(200, [], file_get_contents(__DIR__ . '/data/example-response.json')),
+            new Response(200, [], file_get_contents(__DIR__.'/data/example-response.json')),
         ]));
         $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
         $transactionList = $downloader->downloadSince(new \DateTime('-1 week'));
