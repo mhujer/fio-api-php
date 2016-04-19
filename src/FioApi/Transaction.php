@@ -17,13 +17,13 @@ class Transaction
     protected $currency;
 
     /** @var string */
-    protected $senderAccountNumber;
+    protected $accountNumber;
 
     /** @var string */
-    protected $senderBankCode;
+    protected $bankCode;
 
     /** @var string */
-    protected $senderBankName;
+    protected $bankName;
 
     /** @var int */
     protected $constantSymbol;
@@ -60,9 +60,9 @@ class Transaction
         $date,
         $amount,
         $currency,
-        $senderAccountNumber,
-        $senderBankCode,
-        $senderBankName,
+        $accountNumber,
+        $bankCode,
+        $bankName,
         $constantSymbol,
         $variableSymbol,
         $specificSymbol,
@@ -78,9 +78,9 @@ class Transaction
         $this->date = $date;
         $this->amount = $amount;
         $this->currency = $currency;
-        $this->senderAccountNumber = $senderAccountNumber;
-        $this->senderBankCode = $senderBankCode;
-        $this->senderBankName = $senderBankName;
+        $this->accountNumber = $accountNumber;
+        $this->bankCode = $bankCode;
+        $this->bankName = $bankName;
         $this->constantSymbol = $constantSymbol;
         $this->variableSymbol = $variableSymbol;
         $this->specificSymbol = $specificSymbol;
@@ -156,25 +156,55 @@ class Transaction
     /**
      * @return string
      */
-    public function getSenderAccountNumber()
+    public function getAccountNumber()
     {
-        return $this->senderAccountNumber;
+        return $this->accountNumber;
     }
 
     /**
+     * @deprecated
+     * @return string
+     */
+    public function getSenderAccountNumber()
+    {
+        trigger_error(__METHOD__ . ' is deprecated use getAccountNumber() instead.', E_USER_DEPRECATED);
+        return $this->getAccountNumber();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBankCode()
+    {
+        return $this->bankCode;
+    }
+
+    /**
+     * @deprecated
      * @return string
      */
     public function getSenderBankCode()
     {
-        return $this->senderBankCode;
+        trigger_error(__METHOD__ . ' is deprecated use getBankCode() instead.', E_USER_DEPRECATED);
+        return $this->getBankCode();
     }
 
     /**
      * @return string
      */
+    public function getBankName()
+    {
+        return $this->bankName;
+    }
+
+    /**
+     * @deprecated
+     * @return string
+     */
     public function getSenderBankName()
     {
-        return $this->senderBankName;
+        trigger_error(__METHOD__ . ' is deprecated use getBankName() instead.', E_USER_DEPRECATED);
+        return $this->getBankName();
     }
 
     /**
