@@ -1,4 +1,5 @@
 <?php
+
 namespace FioApi;
 
 use FioApi\Exceptions\InternalErrorException;

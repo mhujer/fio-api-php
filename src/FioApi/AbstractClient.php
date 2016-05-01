@@ -1,4 +1,5 @@
 <?php
+
 namespace FioApi;
 
 abstract class AbstractClient
@@ -25,6 +26,7 @@ abstract class AbstractClient
 
     /**
      * @param string $token
+     *
      * @return AbstractClient
      */
     public function __construct($token, \GuzzleHttp\ClientInterface $client = null)
@@ -36,6 +38,7 @@ abstract class AbstractClient
 
     /**
      * @param string $path
+     *
      * @return void
      */
     public function setCertificatePath($path)
@@ -44,7 +47,7 @@ abstract class AbstractClient
     }
 
     /**
-     * Get certificate path
+     * Get certificate path.
      *
      * @return string
      */
@@ -75,7 +78,7 @@ abstract class AbstractClient
     }
 
     /**
-     * Get token
+     * Get token.
      *
      * @return string
      */
