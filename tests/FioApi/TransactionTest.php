@@ -8,7 +8,7 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
     {
         $transaction = json_decode(file_get_contents(__DIR__.'/data/example-transaction.json'));
 
-        $transaction = Transaction::create($transaction);
+        $transaction = Transaction::createFromJson($transaction);
 
         $this->assertSame(1111111111, $transaction->getId());
         $this->assertEquals(new \DateTime('2015-03-30+0200'), $transaction->getDate());

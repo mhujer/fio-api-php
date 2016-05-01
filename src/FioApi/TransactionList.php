@@ -96,7 +96,7 @@ class TransactionList
         );
 
         foreach ($data->transactionList->transaction as $transaction) {
-            $transactionList->addTransaction(Transaction::create($transaction));
+            $transactionList->addTransaction(Transaction::createFromJson($transaction));
         }
 
         return $transactionList;
