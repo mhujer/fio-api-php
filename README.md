@@ -12,6 +12,7 @@ Usage
 2. Create a *token* in the ebanking (Nastavení / API)
 3. Use it according to the example bellow and check the docblocks
 
+### Downloading 
 ```php
 <?php
 require_once 'vendor/autoload.php';
@@ -23,6 +24,31 @@ foreach ($transactionList->getTransactions() as $transaction) {
     var_dump($transaction); //object with getters
 }
 
+```
+
+### Uploading
+```php
+<?php
+require_once 'vendor/autoload.php';
+
+$uploader = new FioApi\Uploader($token);
+// currency, iban, bic is not needed
+$account = new FioApi\Account('XXXXXXXXXX', 'ZZZZ', NULL, NULL, NULL);
+$tx = Transaction::create((object) [
+    'accountNumber' => 'YYYYYYYYYY',
+    'bankCode' => 'WWWW',
+    'date' => new \DateTime('2016-07-20'),
+    'amount' => 6.66,
+    'currency' => 'CZK',
+    'userMessage' => 'money wasting',
+    'comment' => 'fioapi.test'
+]);
+
+$builder = new FioApi\PaymentBuilder();
+$request = $builder->build($account, [$tx]);
+$response = $uploader->sendRequest($request);
+
+echo $response->getStatus();
 ```
 
 Requirements
