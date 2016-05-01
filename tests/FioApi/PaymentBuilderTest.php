@@ -4,7 +4,6 @@ namespace FioApi;
 
 class PaymentBuilderTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @var \SimpleXMLElement
      */
@@ -47,6 +46,7 @@ class PaymentBuilderTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $mock->method('getAccountNumber')->willReturn('214498596');
+
         return $mock;
     }
 
@@ -66,6 +66,7 @@ class PaymentBuilderTest extends \PHPUnit_Framework_TestCase
         $mock->method('getUserMessage')->willReturn('Groceries Foo, Inc.');
         $mock->method('getComment')->willReturn('Comment');
         $mock->method('getSpecification')->willReturn('431001');
+
         return $mock;
     }
 }

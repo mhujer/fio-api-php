@@ -1,11 +1,12 @@
 <?php
+
 namespace FioApi;
 
 class ImportResponseTest extends \PHPUnit_Framework_TestCase
 {
     public function testSingleOkResponse()
     {
-        $response = new ImportResponse(file_get_contents(__DIR__ . '/data/01-valid-response.xml'));
+        $response = new ImportResponse(file_get_contents(__DIR__.'/data/01-valid-response.xml'));
 
         $this->assertEquals(0, $response->getErrorCode());
         $this->assertEquals('ok', $response->getStatus());
@@ -15,7 +16,7 @@ class ImportResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testMultipleOkReponses()
     {
-        $response = new ImportResponse(file_get_contents(__DIR__ . '/data/02-valid-multiple-response.xml'));
+        $response = new ImportResponse(file_get_contents(__DIR__.'/data/02-valid-multiple-response.xml'));
 
         $this->assertEquals(0, $response->getErrorCode());
         $this->assertEquals('ok', $response->getStatus());

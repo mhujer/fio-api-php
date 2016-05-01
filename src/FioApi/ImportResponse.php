@@ -1,8 +1,9 @@
 <?php
+
 namespace FioApi;
 
 /**
- * Class represents response from FIO api on XML import request
+ * Class represents response from FIO api on XML import request.
  *
  * @author Petr Kramar <petr.kramar@perlur.cz>
  * @license MIT
@@ -20,7 +21,7 @@ class ImportResponse
     }
 
     /**
-     * Get error code
+     * Get error code.
      *
      * @return int
      */
@@ -30,7 +31,7 @@ class ImportResponse
     }
 
     /**
-     * Get status
+     * Get status.
      *
      * @return string
      */
@@ -40,9 +41,10 @@ class ImportResponse
     }
 
     /**
-     * Get debit sum of the batch for particular currency
+     * Get debit sum of the batch for particular currency.
      *
      * @param string $currency
+     *
      * @return float
      */
     public function getDebitSum($currency = 'CZK')
@@ -51,9 +53,10 @@ class ImportResponse
     }
 
     /**
-     * Get credit sum of the batch for particular currency
+     * Get credit sum of the batch for particular currency.
      *
      * @param string $currency
+     *
      * @return float
      */
     public function getCreditSum($currency = 'CZK')
