@@ -38,7 +38,7 @@ class PaymentBuilderTest extends \PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        $this->request = NULL;
+        $this->request = null;
     }
 
     protected function createAccount()

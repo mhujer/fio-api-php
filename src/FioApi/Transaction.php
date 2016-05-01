@@ -122,7 +122,7 @@ class Transaction
 
         $newData = new \stdClass();
         foreach ($data as $key => $value) {
-            if (isset($mapColumnToProps[$key]) && $value !== NULL) {
+            if (isset($mapColumnToProps[$key]) && $value !== null) {
                 $newKey = $mapColumnToProps[$key];
                 if ($newKey === 'date') {
                     $newData->{$newKey} = new \DateTime($value->value);
@@ -138,23 +138,23 @@ class Transaction
     public static function create(\stdClass $data)
     {
         return new self(
-            !empty($data->id) ? $data->id : NULL,
+            !empty($data->id) ? $data->id : null,
             $data->date,
             $data->amount,
             $data->currency,
-            !empty($data->accountNumber) ? $data->accountNumber : NULL,
-            !empty($data->bankCode) ? $data->bankCode : NULL,
-            !empty($data->bankName) ? $data->bankName : NULL,
-            !empty($data->constantSymbol) ? $data->constantSymbol : NULL,
+            !empty($data->accountNumber) ? $data->accountNumber : null,
+            !empty($data->bankCode) ? $data->bankCode : null,
+            !empty($data->bankName) ? $data->bankName : null,
+            !empty($data->constantSymbol) ? $data->constantSymbol : null,
             !empty($data->variableSymbol) ? $data->variableSymbol : '0',
-            !empty($data->specificSymbol) ? $data->specificSymbol : NULL,
-            !empty($data->userIdentity) ? $data->userIdentity : NULL,
-            !empty($data->userMessage) ? $data->userMessage : NULL,
-            !empty($data->transactionType) ? $data->transactionType : NULL,
-            !empty($data->performedBy) ? $data->performedBy : NULL,
-            !empty($data->comment) ? $data->comment : NULL,
-            !empty($data->paymentOrderId) ? $data->paymentOrderId : NULL,
-            !empty($data->specification) ? $data->specification : NULL
+            !empty($data->specificSymbol) ? $data->specificSymbol : null,
+            !empty($data->userIdentity) ? $data->userIdentity : null,
+            !empty($data->userMessage) ? $data->userMessage : null,
+            !empty($data->transactionType) ? $data->transactionType : null,
+            !empty($data->performedBy) ? $data->performedBy : null,
+            !empty($data->comment) ? $data->comment : null,
+            !empty($data->paymentOrderId) ? $data->paymentOrderId : null,
+            !empty($data->specification) ? $data->specification : null
         );
     }
 
