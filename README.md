@@ -44,7 +44,7 @@ $tx = Transaction::create((object) [
     'comment' => 'fioapi.test'
 ]);
 
-$builder = new FioApi\PaymentBuilder();
+$builder = new FioApi\DomesticPaymentBuilder();
 $request = $builder->build($account, [$tx]);
 $response = $uploader->sendRequest($request);
 
