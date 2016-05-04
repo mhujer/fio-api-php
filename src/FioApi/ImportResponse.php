@@ -49,7 +49,7 @@ class ImportResponse
      */
     public function getDebitSum($currency = 'CZK')
     {
-        return (float) $this->xml->result->sums->xpath("sum[@id = 'CZK']")[0]->sumDebet;
+        return (float) $this->xml->result->sums->xpath("sum[@id = '{$currency}']")[0]->sumDebet;
     }
 
     /**
@@ -61,6 +61,6 @@ class ImportResponse
      */
     public function getCreditSum($currency = 'CZK')
     {
-        return (float) $this->xml->result->sums->xpath("sum[@id = 'CZK']")[0]->sumCredit;
+        return (float) $this->xml->result->sums->xpath("sum[@id = '{$currency}']")[0]->sumCredit;
     }
 }
