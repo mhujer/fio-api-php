@@ -2,7 +2,7 @@
 
 namespace FioApi;
 
-class PaymentBuilderTest extends \PHPUnit_Framework_TestCase
+class DomesticPaymentBuilderTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \SimpleXMLElement
@@ -28,7 +28,7 @@ class PaymentBuilderTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $builder = new PaymentBuilder();
+        $builder = new DomesticPaymentBuilder();
         $account = $this->createAccount();
         $tx = $this->createTransaction();
 
