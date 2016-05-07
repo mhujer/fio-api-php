@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Import xmlns:xsi="http://www.w3.org/2001/XMLSchema-Instance">
+    <Orders>
+        <DomesticTransaction>
+            <accountFrom>2800075587</accountFrom>
+            <currency>CZK</currency>
+            <amount>200.00</amount>
+            <accountTo>1488943014</accountTo>
+            <bankCode>3030</bankCode>
+            <date>2016-05-01</date>
+        </DomesticTransaction>
+        <DomesticTransaction>
+            <accountFrom>2800075587</accountFrom>
+            <currency>CZK</currency>
+            <amount>50.00</amount>
+            <accountTo>1488943022</accountTo>
+            <bankCode>3030</bankCode>
+            <date>2016-05-01</date>
+        </DomesticTransaction>
+    </Orders>
+</Import>

@@ -1,66 +1,17 @@
 <?php
+
 namespace FioApi;
 
 use FioApi\Exceptions\InternalErrorException;
 use FioApi\Exceptions\TooGreedyException;
 use Psr\Http\Message\ResponseInterface;
 
-class Downloader
+class Downloader extends AbstractClient
 {
-    /** @var UrlBuilder */
-    protected $urlBuilder;
-
-    /** @var \GuzzleHttp\Client */
-    protected $client;
-
-    /** @var string */
-    protected $certificatePath;
-
-    /**
-     * @param string $token
-     */
-    public function __construct($token, \GuzzleHttp\ClientInterface $client = null)
-    {
-        $this->urlBuilder = new UrlBuilder($token);
-        $this->client = $client;
-    }
-
-    /**
-     * @param string $path
-     */
-    public function setCertificatePath($path)
-    {
-        $this->certificatePath = $path;
-    }
-
-    public function getCertificatePath()
-    {
-        if ($this->certificatePath) {
-            return $this->certificatePath;
-        }
-
-        if (class_exists('\Kdyby\CurlCaBundle\CertificateHelper')) {
-            return \Kdyby\CurlCaBundle\CertificateHelper::getCaInfoFile();
-        }
-
-        //Key downloaded from https://www.geotrust.com/resources/root-certificates/
-        return __DIR__ . '/keys/Geotrust_PCA_G3_Root.pem';
-    }
-
-    /**
-     * @return \GuzzleHttp\ClientInterface
-     */
-    public function getClient()
-    {
-        if (!$this->client) {
-            $this->client = new \GuzzleHttp\Client();
-        }
-        return $this->client;
-    }
-
     /**
      * @param \DateTime $from
      * @param \DateTime $to
+     *
      * @return TransactionList
      */
     public function downloadFromTo(\DateTime $from, \DateTime $to)
@@ -90,6 +41,7 @@ class Downloader
 
     /**
      * @param \DateTime $since
+     *
      * @return TransactionList
      */
     public function downloadSince(\DateTime $since)

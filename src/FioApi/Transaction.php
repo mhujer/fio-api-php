@@ -1,8 +1,12 @@
 <?php
+
 namespace FioApi;
 
 class Transaction
 {
+
+    const REMITTANCE_INFO_LENGTH = 35;
+
     /** @var int */
     protected $id;
 
@@ -16,13 +20,13 @@ class Transaction
     protected $currency;
 
     /** @var string */
-    protected $senderAccountNumber;
+    protected $accountNumber;
 
     /** @var string */
-    protected $senderBankCode;
+    protected $bankCode;
 
     /** @var string */
-    protected $senderBankName;
+    protected $bankName;
 
     /** @var int */
     protected $constantSymbol;
@@ -59,9 +63,9 @@ class Transaction
         $date,
         $amount,
         $currency,
-        $senderAccountNumber,
-        $senderBankCode,
-        $senderBankName,
+        $accountNumber,
+        $bankCode,
+        $bankName,
         $constantSymbol,
         $variableSymbol,
         $specificSymbol,
@@ -77,9 +81,9 @@ class Transaction
         $this->date = $date;
         $this->amount = $amount;
         $this->currency = $currency;
-        $this->senderAccountNumber = $senderAccountNumber;
-        $this->senderBankCode = $senderBankCode;
-        $this->senderBankName = $senderBankName;
+        $this->accountNumber = $accountNumber;
+        $this->bankCode = $bankCode;
+        $this->bankName = $bankName;
         $this->constantSymbol = $constantSymbol;
         $this->variableSymbol = $variableSymbol;
         $this->specificSymbol = $specificSymbol;
@@ -94,28 +98,66 @@ class Transaction
 
     /**
      * @param \stdClass $data Transaction data from JSON API response
+     *
      * @return Transaction
      */
+    public static function createFromJson(\stdClass $data)
+    {
+        $mapColumnToProps = [
+            'column22' => 'id',
+            'column0'  => 'date',
+            'column1'  => 'amount',
+            'column14' => 'currency',
+            'column2'  => 'accountNumber',
+            'column3'  => 'bankCode',
+            'column12' => 'bankName',
+            'column4'  => 'constantSymbol',
+            'column5'  => 'variableSymbol',
+            'column6'  => 'specificSymbol',
+            'column7'  => 'userIdentity',
+            'column16' => 'userMessage',
+            'column8'  => 'transactionType',
+            'column9'  => 'performedBy',
+            'column25' => 'comment',
+            'column17' => 'paymentOrderId',
+            'column18' => 'specification',
+        ];
+
+        $newData = new \stdClass();
+        foreach ($data as $key => $value) {
+            if (isset($mapColumnToProps[$key]) && $value !== null) {
+                $newKey = $mapColumnToProps[$key];
+                if ($newKey === 'date') {
+                    $newData->{$newKey} = new \DateTime($value->value);
+                } else {
+                    $newData->{$newKey} = $value->value;
+                }
+            }
+        }
+
+        return self::create($newData);
+    }
+
     public static function create(\stdClass $data)
     {
         return new self(
-            $data->column22->value, //ID pohybu
-            new \DateTime($data->column0->value), //Datum
-            $data->column1->value, //Objem
-            $data->column14->value, //Měna
-            !empty($data->column2) ? $data->column2->value : null, //Protiúčet
-            !empty($data->column3) ? $data->column3->value : null, //Kód banky
-            !empty($data->column12) ? $data->column12->value : null, //Název banky
-            !empty($data->column4) ? $data->column4->value : null, //KS
-            !empty($data->column5) ? $data->column5->value : null, //VS
-            !empty($data->column6) ? $data->column6->value : null, //SS
-            !empty($data->column7) ? $data->column7->value : null, //Uživatelská identifikace
-            !empty($data->column16) ? $data->column16->value : null, //Zpráva pro příjemce
-            $data->column8->value, //Typ
-            !empty($data->column9) ? $data->column9->value : null, //Provedl
-            !empty($data->column25) ? $data->column25->value : null, //Komentář
-            !empty($data->column17) ? $data->column17->value : null, //ID pokynu
-            !empty($data->column18) ? $data->column18->value : null //Upřesnění
+            !empty($data->id) ? $data->id : null,
+            $data->date,
+            $data->amount,
+            $data->currency,
+            !empty($data->accountNumber) ? $data->accountNumber : null,
+            !empty($data->bankCode) ? $data->bankCode : null,
+            !empty($data->bankName) ? $data->bankName : null,
+            !empty($data->constantSymbol) ? $data->constantSymbol : null,
+            !empty($data->variableSymbol) ? $data->variableSymbol : '0',
+            !empty($data->specificSymbol) ? $data->specificSymbol : null,
+            !empty($data->userIdentity) ? $data->userIdentity : null,
+            !empty($data->userMessage) ? $data->userMessage : null,
+            !empty($data->transactionType) ? $data->transactionType : null,
+            !empty($data->performedBy) ? $data->performedBy : null,
+            !empty($data->comment) ? $data->comment : null,
+            !empty($data->paymentOrderId) ? $data->paymentOrderId : null,
+            !empty($data->specification) ? $data->specification : null
         );
     }
 
@@ -154,25 +196,61 @@ class Transaction
     /**
      * @return string
      */
-    public function getSenderAccountNumber()
+    public function getAccountNumber()
     {
-        return $this->senderAccountNumber;
+        return $this->accountNumber;
     }
 
     /**
+     * @deprecated
+     *
+     * @return string
+     */
+    public function getSenderAccountNumber()
+    {
+        trigger_error(__METHOD__.' is deprecated use getAccountNumber() instead.', E_USER_DEPRECATED);
+
+        return $this->getAccountNumber();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBankCode()
+    {
+        return $this->bankCode;
+    }
+
+    /**
+     * @deprecated
+     *
      * @return string
      */
     public function getSenderBankCode()
     {
-        return $this->senderBankCode;
+        trigger_error(__METHOD__.' is deprecated use getBankCode() instead.', E_USER_DEPRECATED);
+
+        return $this->getBankCode();
     }
 
     /**
      * @return string
      */
+    public function getBankName()
+    {
+        return $this->bankName;
+    }
+
+    /**
+     * @deprecated
+     *
+     * @return string
+     */
     public function getSenderBankName()
     {
-        return $this->senderBankName;
+        trigger_error(__METHOD__.' is deprecated use getBankName() instead.', E_USER_DEPRECATED);
+
+        return $this->getBankName();
     }
 
     /**
@@ -213,6 +291,46 @@ class Transaction
     public function getUserMessage()
     {
         return $this->userMessage;
+    }
+
+    /**
+     * Gets first chunk of remittanceInfo
+     *
+     * @return string
+     */
+    public function getRemittanceInfo1()
+    {
+        return (string) substr($this->getUserMessage(), 0, self::REMITTANCE_INFO_LENGTH);
+    }
+
+    /**
+     * Gets second chunk of remittance info
+     *
+     * @return string
+     */
+    public function getRemittanceInfo2()
+    {
+        return (string) substr($this->getUserMessage(), 1*self::REMITTANCE_INFO_LENGTH, self::REMITTANCE_INFO_LENGTH);
+    }
+
+    /**
+     * Gets third chunk of remittance info
+     *
+     * @return string
+     */
+    public function getRemittanceInfo3()
+    {
+        return (string) substr($this->getUserMessage(), 2*self::REMITTANCE_INFO_LENGTH, self::REMITTANCE_INFO_LENGTH);
+    }
+
+    /**
+     * Gets fourth chunk of remittance info
+     *
+     * @return string
+     */
+    public function getRemittanceInfo4()
+    {
+        return (string) substr($this->getUserMessage(), 3*self::REMITTANCE_INFO_LENGTH, self::REMITTANCE_INFO_LENGTH);
     }
 
     /**
