@@ -4,6 +4,8 @@ namespace FioApi;
 
 class Transaction
 {
+    const REMITTANCE_INFO_LENGTH = 35;
+
     /** @var int */
     protected $id;
 
@@ -288,6 +290,46 @@ class Transaction
     public function getUserMessage()
     {
         return $this->userMessage;
+    }
+
+    /**
+     * Gets first chunk of remittance info.
+     *
+     * @return string
+     */
+    public function getRemittanceInfo1()
+    {
+        return (string) substr($this->getUserMessage(), 0, self::REMITTANCE_INFO_LENGTH);
+    }
+
+    /**
+     * Gets second chunk of remittance info.
+     *
+     * @return string
+     */
+    public function getRemittanceInfo2()
+    {
+        return (string) substr($this->getUserMessage(), self::REMITTANCE_INFO_LENGTH, self::REMITTANCE_INFO_LENGTH);
+    }
+
+    /**
+     * Gets third chunk of remittance info.
+     *
+     * @return string
+     */
+    public function getRemittanceInfo3()
+    {
+        return (string) substr($this->getUserMessage(), 2 * self::REMITTANCE_INFO_LENGTH, self::REMITTANCE_INFO_LENGTH);
+    }
+
+    /**
+     * Gets fourth chunk of remittance info.
+     *
+     * @return string
+     */
+    public function getRemittanceInfo4()
+    {
+        return (string) substr($this->getUserMessage(), 3 * self::REMITTANCE_INFO_LENGTH, self::REMITTANCE_INFO_LENGTH);
     }
 
     /**
