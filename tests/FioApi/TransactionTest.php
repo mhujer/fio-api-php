@@ -65,4 +65,22 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($remittanceInfo[2], $tx->getRemittanceInfo3());
         $this->assertEquals($remittanceInfo[3], $tx->getRemittanceInfo4());
     }
+
+    public function testBenefFields()
+    {
+        $tx = Transaction::create((object) [
+            'date' => new \DateTime(),
+            'amount' => 200.00,
+            'currency' => 'CAD',
+            'benefName' => 'Petr Kramar',
+            'benefStreet' => 'Andelova 12',
+            'benefCity' => 'Ostrava',
+            'benefCountry' => 'CZ',
+        ]);
+
+        $this->assertEquals('Petr Kramar', $tx->getBenefName());
+        $this->assertEquals('Andelova 12', $tx->getBenefStreet());
+        $this->assertEquals('Ostrava', $tx->getBenefCity());
+        $this->assertEquals('CZ', $tx->getBenefCountry());
+    }
 }
