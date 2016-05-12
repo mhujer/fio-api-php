@@ -32,7 +32,7 @@ class DomesticPaymentBuilderTest extends \PHPUnit_Framework_TestCase
         $account = $this->createAccount();
         $tx = $this->createTransaction();
 
-        $this->request = simplexml_load_string($builder->build($account, [$tx]));
+        $this->request = $builder->build($account, [$tx]);
     }
 
     protected function tearDown()

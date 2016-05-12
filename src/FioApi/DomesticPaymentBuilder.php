@@ -2,7 +2,7 @@
 
 namespace FioApi;
 
-class DomesticPaymentBuilder implements PaymentBuilder
+class DomesticPaymentBuilder extends AbstractPaymentBuilder implements PaymentBuilder
 {
     /**
      * Build XML request to import payments.
@@ -21,7 +21,7 @@ class DomesticPaymentBuilder implements PaymentBuilder
             $this->createTransaction($node, $transaction, $account);
         }
 
-        return $request->asXML();
+        return $request;
     }
 
     protected function createTransaction(\SimpleXMLElement $node, Transaction $tx, Account $account)
@@ -46,18 +46,5 @@ class DomesticPaymentBuilder implements PaymentBuilder
                 $node->addChild($el, $value);
             }
         }
-    }
-
-    /**
-     * Create root element of XML document.
-     *
-     * @return \SimpleXMLElement
-     */
-    protected function createRoot()
-    {
-        $root = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><Import />');
-        $root->addAttribute('xmlns:xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-Instance');
-
-        return $root;
     }
 }
