@@ -44,7 +44,7 @@ class EuroPaymentBuilder extends AbstractPaymentBuilder implements PaymentBuilde
             'remittanceInfo1' => $tx->getRemittanceInfo1(),
             'remittanceInfo2' => $tx->getRemittanceInfo2(),
             'remittanceInfo3' => $tx->getRemittanceInfo3(),
-            'paymentType'     => $tx->getSpecification()
+            'paymentType'     => $tx->getSpecification(),
         ];
 
         foreach ($nodes as $el => $value) {

@@ -27,6 +27,8 @@ foreach ($transactionList->getTransactions() as $transaction) {
 ```
 
 ### Uploading
+
+#### Domestic payment (in Czechia)
 ```php
 <?php
 require_once 'vendor/autoload.php';
@@ -50,6 +52,35 @@ $response = $uploader->sendRequest($request);
 
 echo $response->getStatus();
 ```
+
+#### European payment
+```php
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$token = get_your_fio_token();
+$uploader = new FioApi\Uploader($token);
+$account = new FioApi\Account('XXXXXXXXXX', 'YYYY', null, null, null);
+$tx = FioApi\Transaction::create((object) [
+    'accountNumber' => 'XXXXXXXXXXXXXXXX',
+    'bankCode'      => 'WWWWWWWWWW',
+    'date'          => new DateTime('2016-05-30'),
+    'amount'        => 66.5,
+    'currency'      => 'EUR',
+    'userMessage'   => 'Donation for poor ones',
+    'comment'       => 'fioapi.test',
+    'benefName'     => 'Something Finland Oy',
+    'benefCountry'  => 'FI',
+]);
+
+$builder = new FioApi\EuroPaymentBuilder();
+$request = $builder->build($account, [$tx]);
+$response = $uploader->sendRequest($request);
+
+echo $response->getStatus();
+echo "\n";
+```
+
 
 Requirements
 ------------

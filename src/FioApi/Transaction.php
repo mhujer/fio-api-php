@@ -58,29 +58,32 @@ class Transaction
     protected $specification;
 
     /**
-     * Account owner
+     * Account owner.
+     *
      * @var string
      */
     protected $benefName;
 
     /**
-     * Street of account owner
+     * Street of account owner.
+     *
      * @var string
      */
     protected $benefStreet;
 
     /**
-     * City of account owner
+     * City of account owner.
+     *
      * @var string
      */
     protected $benefCity;
 
     /**
-     * Country of account owner
+     * Country of account owner.
+     *
      * @var string
      */
     protected $benefCountry;
-
 
     protected function __construct(
         $id,
