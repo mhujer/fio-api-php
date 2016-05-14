@@ -57,6 +57,34 @@ class Transaction
     /** @var string */
     protected $specification;
 
+    /**
+     * Account owner.
+     *
+     * @var string
+     */
+    protected $benefName;
+
+    /**
+     * Street of account owner.
+     *
+     * @var string
+     */
+    protected $benefStreet;
+
+    /**
+     * City of account owner.
+     *
+     * @var string
+     */
+    protected $benefCity;
+
+    /**
+     * Country of account owner.
+     *
+     * @var string
+     */
+    protected $benefCountry;
+
     protected function __construct(
         $id,
         $date,
@@ -74,7 +102,11 @@ class Transaction
         $performedBy,
         $comment,
         $paymentOrderId,
-        $specification
+        $specification,
+        $benefName,
+        $benefStreet,
+        $benefCity,
+        $benefCountry
     ) {
         $this->id = $id;
         $this->date = $date;
@@ -93,6 +125,10 @@ class Transaction
         $this->comment = $comment;
         $this->paymentOrderId = $paymentOrderId;
         $this->specification = $specification;
+        $this->benefName = $benefName;
+        $this->benefStreet = $benefStreet;
+        $this->benefCity = $benefCity;
+        $this->benefCountry = $benefCountry;
     }
 
     /**
@@ -156,7 +192,11 @@ class Transaction
             !empty($data->performedBy) ? $data->performedBy : null,
             !empty($data->comment) ? $data->comment : null,
             !empty($data->paymentOrderId) ? $data->paymentOrderId : null,
-            !empty($data->specification) ? $data->specification : null
+            !empty($data->specification) ? $data->specification : null,
+            !empty($data->benefName) ? $data->benefName : null,
+            !empty($data->benefStreet) ? $data->benefStreet : null,
+            !empty($data->benefCity) ? $data->benefCity : null,
+            !empty($data->benefCountry) ? $data->benefCountry : null
         );
     }
 
@@ -370,5 +410,37 @@ class Transaction
     public function getSpecification()
     {
         return $this->specification;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefName()
+    {
+        return $this->benefName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefStreet()
+    {
+        return $this->benefStreet;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefCity()
+    {
+        return $this->benefCity;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBenefCountry()
+    {
+        return $this->benefCountry;
     }
 }

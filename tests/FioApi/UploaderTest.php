@@ -11,7 +11,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
 {
     public function testSendRequest()
     {
-        $request = file_get_contents(__DIR__.'/data/01-valid-request.xml');
+        $request = simplexml_load_file(__DIR__.'/data/01-valid-request.xml');
         $handler = HandlerStack::create(new MockHandler([
            new Response(200, [], file_get_contents(__DIR__.'/data/01-valid-response.xml')),
         ]));
