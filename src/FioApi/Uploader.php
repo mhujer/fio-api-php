@@ -16,7 +16,7 @@ class Uploader extends AbstractClient
     /**
      * Send request.
      *
-     * @param string $request XML formatted request
+     * @param \SimpleXMLElement $request
      *
      * @throws BadResponseException
      *
@@ -31,7 +31,7 @@ class Uploader extends AbstractClient
                 'multipart' => [
                     ['name' => 'token', 'contents' => $this->getToken()],
                     ['name' => 'type', 'contents' => 'xml'],
-                    ['name' => 'file', 'contents' => $request, 'filename' => 'request.xml'],
+                    ['name' => 'file', 'contents' => $request->asXML(), 'filename' => 'request.xml'],
                     ['name' => 'lng', 'contents' => 'en'],
                 ],
             ]);
