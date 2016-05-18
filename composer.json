@@ -1,21 +1,33 @@
 {
-  "name": "mhujer/fio-api-php",
+  "name": "perlur/php-fio-api",
   "type": "library",
-  "description": "Fio API PHP implemention",
+  "description": "PHP Fio API implemention",
   "keywords": [
     "fio",
     "banking",
     "api"
   ],
-  "homepage": "https://github.com/mhujer/fio-api-php",
+  "homepage": "https://github.com/perlur/php-fio-api",
   "license": "MIT",
   "authors": [
+    {
+      "name": "Marek Stopka",
+      "email": "marek.stopka@perlur.cloud",
+      "homepage": "https://www.perlur.cloud/go/marek-stopka/",
+      "role": "Business Owner"
+    },
+    {
+      "name": "Petr Kramář",
+      "email": "petr.kramar@perlur.cloud",
+      "homepage": "https://www.perlur.cloud/go/petr-kramar/",
+      "role": "Software Developer"
+    },
     {
       "name": "Martin Hujer",
       "email": "mhujer@gmail.com",
       "homepage": "https://www.martinhujer.cz/",
-      "role": "Developer"
-    }
+      "role": "Initial Developer"
+    },
   ],
   "require": {
     "php": ">=5.5",
