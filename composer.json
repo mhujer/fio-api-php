@@ -27,7 +27,7 @@
       "email": "mhujer@gmail.com",
       "homepage": "https://www.martinhujer.cz/",
       "role": "Initial Developer"
-    },
+    }
   ],
   "require": {
     "php": ">=5.5",
