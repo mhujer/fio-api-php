@@ -28,7 +28,8 @@
     "satooshi/php-coveralls": "^1.0"
   },
   "suggest": {
-    "kdyby/curl-ca-bundle": "Provides regularly updated root certificates list"
+    "kdyby/curl-ca-bundle": "Provides regularly updated root certificates list",
+    "composer/ca-bundle": "Provides regularly updated root certificates list"
   },
   "autoload": {
     "psr-4": {
