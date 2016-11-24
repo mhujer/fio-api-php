@@ -39,7 +39,9 @@ class Downloader
             return $this->certificatePath;
         }
 
-        if (class_exists('\Kdyby\CurlCaBundle\CertificateHelper')) {
+        if (class_exists('\Composer\CaBundle\CaBundle')) {
+            return \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath();
+        } elseif (class_exists('\Kdyby\CurlCaBundle\CertificateHelper')) {
             return \Kdyby\CurlCaBundle\CertificateHelper::getCaInfoFile();
         }
 
