@@ -39,6 +39,9 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 
 Changelog
 ----------
+## 2.3.0 (2016-11-24)
+- [#7](https://github.com/mhujer/fio-api-php/pull/7): added official composer CA bundle support (@soukicz)
+
 ## 2.2.0 (2016-03-13)
 - [#2](https://github.com/mhujer/fio-api-php/pull/2): added [Kdyby/CurlCaBundle](https://github.com/Kdyby/CurlCaBundle)
  	as an optional dependency (@mhujer)
