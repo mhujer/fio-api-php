@@ -27,7 +27,7 @@ foreach ($transactionList->getTransactions() as $transaction) {
 
 Requirements
 ------------
-Fio API PHP works with PHP 5.5, PHP 5.6 or PHP 7.
+Fio API PHP works with PHP 7 or higher.
 
 Submitting bugs and feature requests
 ------------------------------------
@@ -39,6 +39,9 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 
 Changelog
 ----------
+## 3.0.0 (2016-11-24)
+- dropped support for PHP <7
+
 ## 2.3.0 (2016-11-24)
 - [#7](https://github.com/mhujer/fio-api-php/pull/7): added official composer CA bundle support (@soukicz)
 
