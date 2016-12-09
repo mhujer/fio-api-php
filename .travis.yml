@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 7.0
   - 7.1
 
 env:
@@ -17,7 +16,7 @@ script:
   - composer test
 
   # phpcs only on latest PHP
-  - if [[ $TRAVIS_PHP_VERSION = '7.0' ]]; then composer phpcs; fi
+  - if [[ $TRAVIS_PHP_VERSION = '7.1' ]]; then composer phpcs; fi
 
 after_script:
   - php vendor/bin/coveralls -v

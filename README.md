@@ -40,7 +40,8 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 Changelog
 ----------
 
-## X.X.X (201X-XX-XX)
+## 4.0.0 (201X-XX-XX)
+- minimal supported version is PHP 7.1
 - `DateTime` replaced with `DateTimeImmutable` (or `DateTimeInterface`)
 
 ## 3.0.0 (2016-11-24)
