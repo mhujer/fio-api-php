@@ -13,10 +13,10 @@ class AccountTest extends \PHPUnit_Framework_TestCase
             'CZ9820100000000214498596',
             'FIOBCZPPXXX'
         );
-        $this->assertEquals('214498596', $account->getAccountNumber());
-        $this->assertEquals('2010', $account->getBankCode());
-        $this->assertEquals('CZK', $account->getCurrency());
-        $this->assertEquals('CZ9820100000000214498596', $account->getIban());
-        $this->assertEquals('FIOBCZPPXXX', $account->getBic());
+        $this->assertSame('214498596', $account->getAccountNumber());
+        $this->assertSame('2010', $account->getBankCode());
+        $this->assertSame('CZK', $account->getCurrency());
+        $this->assertSame('CZ9820100000000214498596', $account->getIban());
+        $this->assertSame('FIOBCZPPXXX', $account->getBic());
     }
 }

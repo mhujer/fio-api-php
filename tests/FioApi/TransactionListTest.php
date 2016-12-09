@@ -17,7 +17,7 @@ class TransactionListTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(1111111111, $transactionList->getIdFrom());
         $this->assertSame(1111111999, $transactionList->getIdTo());
         $this->assertSame(null, $transactionList->getIdLastDownload());
-        $this->assertInstanceOf('FioApi\Account', $transactionList->getAccount());
-        $this->assertInstanceOf('FioApi\Transaction', $transactionList->getTransactions()[0]);
+        $this->assertInstanceOf(Account::class, $transactionList->getAccount());
+        $this->assertInstanceOf(Transaction::class, $transactionList->getTransactions()[0]);
     }
 }
