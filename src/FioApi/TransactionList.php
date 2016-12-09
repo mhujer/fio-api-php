@@ -17,10 +17,10 @@ class TransactionList
     /** @var \DateTimeImmutable */
     protected $dateEnd;
 
-    /** @var int */
+    /** @var float */
     protected $idFrom;
 
-    /** @var int */
+    /** @var float */
     protected $idTo;
 
     /** @var int */
@@ -37,8 +37,8 @@ class TransactionList
         float $closingBalance,
         \DateTimeImmutable $dateStart,
         \DateTimeImmutable $dateEnd,
-        int $idFrom,
-        int $idTo,
+        float $idFrom,
+        float $idTo,
         ?int $idLastDownload,
         Account $account
     ) {
@@ -112,12 +112,12 @@ class TransactionList
         return $this->dateEnd;
     }
 
-    public function getIdFrom(): int
+    public function getIdFrom(): float
     {
         return $this->idFrom;
     }
 
-    public function getIdTo(): int
+    public function getIdTo(): float
     {
         return $this->idTo;
     }

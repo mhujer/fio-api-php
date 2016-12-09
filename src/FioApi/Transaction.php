@@ -26,13 +26,13 @@ class Transaction
     /** @var string|null */
     protected $senderBankName;
 
-    /** @var int|null */
+    /** @var string|null */
     protected $constantSymbol;
 
     /** @var string|null */
     protected $variableSymbol;
 
-    /** @var int|null */
+    /** @var string|null */
     protected $specificSymbol;
 
     /** @var string|null */
@@ -50,7 +50,7 @@ class Transaction
     /** @var string|null */
     protected $comment;
 
-    /** @var int|null */
+    /** @var float|null */
     protected $paymentOrderId;
 
     /** @var string|null */
@@ -64,15 +64,15 @@ class Transaction
         ?string $senderAccountNumber,
         ?string $senderBankCode,
         ?string $senderBankName,
-        ?int $constantSymbol,
+        ?string $constantSymbol,
         ?string $variableSymbol,
-        ?int $specificSymbol,
+        ?string $specificSymbol,
         ?string $userIdentity,
         ?string $userMessage,
         string $transactionType,
         ?string $performedBy,
         ?string $comment,
-        ?int $paymentOrderId,
+        ?float $paymentOrderId,
         ?string $specification
     ) {
         $this->id = $id;
@@ -156,7 +156,7 @@ class Transaction
         return $this->senderBankName;
     }
 
-    public function getConstantSymbol(): ?int
+    public function getConstantSymbol(): ?string
     {
         return $this->constantSymbol;
     }
@@ -166,7 +166,7 @@ class Transaction
         return $this->variableSymbol;
     }
 
-    public function getSpecificSymbol(): ?int
+    public function getSpecificSymbol(): ?string
     {
         return $this->specificSymbol;
     }
@@ -196,7 +196,7 @@ class Transaction
         return $this->comment;
     }
 
-    public function getPaymentOrderId(): ?int
+    public function getPaymentOrderId(): ?float
     {
         return $this->paymentOrderId;
     }
