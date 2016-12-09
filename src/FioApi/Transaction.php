@@ -5,7 +5,7 @@ namespace FioApi;
 
 class Transaction
 {
-    /** @var int */
+    /** @var float */
     protected $id;
 
     /** @var \DateTimeImmutable */
@@ -57,7 +57,7 @@ class Transaction
     protected $specification;
 
     protected function __construct(
-        $id,
+        float $id,
         \DateTimeImmutable $date,
         float $amount,
         string $currency,
@@ -121,7 +121,7 @@ class Transaction
         );
     }
 
-    public function getId(): int
+    public function getId(): float
     {
         return $this->id;
     }
