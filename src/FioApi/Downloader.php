@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 namespace FioApi;
 
 use FioApi\Exceptions\InternalErrorException;
@@ -87,7 +89,7 @@ class Downloader
             throw $e;
         }
 
-        return TransactionList::create(json_decode($response->getBody())->accountStatement);
+        return TransactionList::create(json_decode($response->getBody()->getContents())->accountStatement);
     }
 
     /**
