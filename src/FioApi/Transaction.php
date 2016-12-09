@@ -6,7 +6,7 @@ class Transaction
     /** @var int */
     protected $id;
 
-    /** @var \DateTime */
+    /** @var \DateTimeImmutable */
     protected $date;
 
     /** @var float */
@@ -56,7 +56,7 @@ class Transaction
 
     protected function __construct(
         $id,
-        $date,
+        \DateTimeImmutable $date,
         $amount,
         $currency,
         $senderAccountNumber,
@@ -100,7 +100,7 @@ class Transaction
     {
         return new self(
             $data->column22->value, //ID pohybu
-            new \DateTime($data->column0->value), //Datum
+            new \DateTimeImmutable($data->column0->value), //Datum
             $data->column1->value, //Objem
             $data->column14->value, //Měna
             !empty($data->column2) ? $data->column2->value : null, //Protiúčet
@@ -128,7 +128,7 @@ class Transaction
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
     public function getDate()
     {

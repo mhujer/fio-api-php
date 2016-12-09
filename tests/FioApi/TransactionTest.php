@@ -11,7 +11,7 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
         $transaction = Transaction::create($transaction);
 
         $this->assertSame(1111111111, $transaction->getId());
-        $this->assertEquals(new \DateTime('2015-03-30+0200'), $transaction->getDate());
+        $this->assertEquals(new \DateTimeImmutable('2015-03-30+0200'), $transaction->getDate());
         $this->assertSame(127.0, $transaction->getAmount());
         $this->assertSame('CZK', $transaction->getCurrency());
         $this->assertSame('214498596', $transaction->getSenderAccountNumber());

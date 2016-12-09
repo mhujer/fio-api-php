@@ -19,7 +19,7 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
 
         $this->expectException(\FioApi\Exceptions\TooGreedyException::class);
 
-        $downloader->downloadSince(new \DateTime('-1 week'));
+        $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
     }
 
     public function testInvalidTokenResultsInInternalErrorException()
@@ -31,7 +31,7 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
 
         $this->expectException(\FioApi\Exceptions\InternalErrorException::class);
 
-        $downloader->downloadSince(new \DateTime('-1 week'));
+        $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
     }
 
     public function testUnknownResponseCodePassesOriginalException()
@@ -44,7 +44,7 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
         $this->expectException(\GuzzleHttp\Exception\BadResponseException::class);
         $this->expectExceptionCode(418);
 
-        $downloader->downloadSince(new \DateTime('-1 week'));
+        $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
     }
 
     public function testDownloaderDownloadsData()
@@ -54,7 +54,7 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
         ]));
         $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
 
-        $transactionList = $downloader->downloadSince(new \DateTime('-1 week'));
+        $transactionList = $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
 
         $this->assertInstanceOf(TransactionList::class, $transactionList);
     }

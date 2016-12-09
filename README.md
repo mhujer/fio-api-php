@@ -17,7 +17,7 @@ Usage
 require_once 'vendor/autoload.php';
 
 $downloader = new FioApi\Downloader('TOKEN@todo');
-$transactionList = $downloader->downloadSince(new \DateTime('-1 week'));
+$transactionList = $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
 
 foreach ($transactionList->getTransactions() as $transaction) {
     var_dump($transaction); //object with getters
@@ -39,6 +39,10 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 
 Changelog
 ----------
+
+## X.X.X (201X-XX-XX)
+- `DateTime` replaced with `DateTimeImmutable` (or `DateTimeInterface`)
+
 ## 3.0.0 (2016-11-24)
 - dropped support for PHP <7
 

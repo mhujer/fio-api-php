@@ -9,10 +9,10 @@ class TransactionList
     /** @var float */
     protected $closingBalance;
 
-    /** @var \DateTime */
+    /** @var \DateTimeImmutable */
     protected $dateStart;
 
-    /** @var \DateTime */
+    /** @var \DateTimeImmutable */
     protected $dateEnd;
 
     /** @var int */
@@ -33,8 +33,8 @@ class TransactionList
     /**
      * @param float $openingBalance
      * @param float $closingBalance
-     * @param \DateTime $dateStart
-     * @param \DateTime $dateEnd
+     * @param \DateTimeImmutable $dateStart
+     * @param \DateTimeImmutable $dateEnd
      * @param int $idFrom
      * @param int $idTo
      * @param int $idLastDownload
@@ -43,8 +43,8 @@ class TransactionList
     protected function __construct(
         $openingBalance,
         $closingBalance,
-        \DateTime $dateStart,
-        \DateTime $dateEnd,
+        \DateTimeImmutable $dateStart,
+        \DateTimeImmutable $dateEnd,
         $idFrom,
         $idTo,
         $idLastDownload,
@@ -85,8 +85,8 @@ class TransactionList
         $transactionList = new self(
             $data->info->openingBalance,
             $data->info->closingBalance,
-            new \DateTime($data->info->dateStart),
-            new \DateTime($data->info->dateEnd),
+            new \DateTimeImmutable($data->info->dateStart),
+            new \DateTimeImmutable($data->info->dateEnd),
             $data->info->idFrom,
             $data->info->idTo,
             $data->info->idLastDownload,
@@ -117,7 +117,7 @@ class TransactionList
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
     public function getDateStart()
     {
@@ -125,7 +125,7 @@ class TransactionList
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
     public function getDateEnd()
     {

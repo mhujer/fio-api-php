@@ -61,11 +61,11 @@ class Downloader
     }
 
     /**
-     * @param \DateTime $from
-     * @param \DateTime $to
+     * @param \DateTimeInterface $from
+     * @param \DateTimeInterface $to
      * @return TransactionList
      */
-    public function downloadFromTo(\DateTime $from, \DateTime $to)
+    public function downloadFromTo(\DateTimeInterface $from, \DateTimeInterface $to)
     {
         $client = $this->getClient();
         $url = $this->urlBuilder->buildPeriodsUrl($from, $to);
@@ -91,11 +91,11 @@ class Downloader
     }
 
     /**
-     * @param \DateTime $since
+     * @param \DateTimeInterface $since
      * @return TransactionList
      */
-    public function downloadSince(\DateTime $since)
+    public function downloadSince(\DateTimeInterface $since)
     {
-        return $this->downloadFromTo($since, new \DateTime());
+        return $this->downloadFromTo($since, new \DateTimeImmutable());
     }
 }

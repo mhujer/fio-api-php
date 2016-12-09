@@ -42,11 +42,11 @@ class UrlBuilder
     }
 
     /**
-     * @param \DateTime $from
-     * @param \DateTime $to
+     * @param \DateTimeInterface $from
+     * @param \DateTimeInterface $to
      * @return string
      */
-    public function buildPeriodsUrl(\DateTime $from, \DateTime $to)
+    public function buildPeriodsUrl(\DateTimeInterface $from, \DateTimeInterface $to)
     {
         return sprintf(
             self::BASE_URL . 'periods/%s/%s/%s/transactions.json',

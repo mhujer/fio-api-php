@@ -29,7 +29,10 @@ class UrlBuilderTest extends \PHPUnit_Framework_TestCase
         $urlBuilder = new UrlBuilder('token1');
         $this->assertSame(
             'https://www.fio.cz/ib_api/rest/periods/token1/2015-03-25/2015-03-31/transactions.json',
-            $urlBuilder->buildPeriodsUrl(new \DateTime('2015-03-25'), new \DateTime('2015-03-31'))
+            $urlBuilder->buildPeriodsUrl(
+                new \DateTimeImmutable('2015-03-25'),
+                new \DateTimeImmutable('2015-03-31')
+            )
         );
     }
 }

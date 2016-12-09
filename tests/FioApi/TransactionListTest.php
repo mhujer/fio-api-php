@@ -12,8 +12,8 @@ class TransactionListTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(500, $transactionList->getOpeningBalance());
         $this->assertSame(1000, $transactionList->getClosingBalance());
-        $this->assertEquals(new \DateTime('2015-03-30+0200'), $transactionList->getDateStart());
-        $this->assertEquals(new \DateTime('2015-03-31+0200'), $transactionList->getDateEnd());
+        $this->assertEquals(new \DateTimeImmutable('2015-03-30+0200'), $transactionList->getDateStart());
+        $this->assertEquals(new \DateTimeImmutable('2015-03-31+0200'), $transactionList->getDateEnd());
         $this->assertSame(1111111111, $transactionList->getIdFrom());
         $this->assertSame(1111111999, $transactionList->getIdTo());
         $this->assertSame(null, $transactionList->getIdLastDownload());
