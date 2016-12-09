@@ -9,31 +9,20 @@ class UrlBuilder
 {
     const BASE_URL = 'https://www.fio.cz/ib_api/rest/';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $token;
 
-    /**
-     * @param string $token
-     */
-    public function __construct($token)
+    public function __construct(string $token)
     {
         $this->setToken($token);
     }
 
-    /**
-     * @return string
-     */
-    public function getToken()
+    public function getToken(): string
     {
         return $this->token;
     }
 
-    /**
-     * @param string $token
-     */
-    public function setToken($token)
+    public function setToken(string $token)
     {
         if (!$token) {
             throw new MissingTokenException(
@@ -43,12 +32,7 @@ class UrlBuilder
         $this->token = $token;
     }
 
-    /**
-     * @param \DateTimeInterface $from
-     * @param \DateTimeInterface $to
-     * @return string
-     */
-    public function buildPeriodsUrl(\DateTimeInterface $from, \DateTimeInterface $to)
+    public function buildPeriodsUrl(\DateTimeInterface $from, \DateTimeInterface $to): string
     {
         return sprintf(
             self::BASE_URL . 'periods/%s/%s/%s/transactions.json',

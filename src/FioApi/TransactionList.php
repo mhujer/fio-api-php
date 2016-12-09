@@ -32,24 +32,14 @@ class TransactionList
     /** @var Transaction[] */
     protected $transactions = [];
 
-    /**
-     * @param float $openingBalance
-     * @param float $closingBalance
-     * @param \DateTimeImmutable $dateStart
-     * @param \DateTimeImmutable $dateEnd
-     * @param int $idFrom
-     * @param int $idTo
-     * @param int $idLastDownload
-     * @param Account $account
-     */
     protected function __construct(
-        $openingBalance,
-        $closingBalance,
+        float $openingBalance,
+        float $closingBalance,
         \DateTimeImmutable $dateStart,
         \DateTimeImmutable $dateEnd,
-        $idFrom,
-        $idTo,
-        $idLastDownload,
+        int $idFrom,
+        int $idTo,
+        ?int $idLastDownload,
         Account $account
     ) {
         $this->openingBalance = $openingBalance;
@@ -74,7 +64,7 @@ class TransactionList
      * @param \stdClass $data Data from JSON API response
      * @return TransactionList
      */
-    public static function create(\stdClass $data)
+    public static function create(\stdClass $data): TransactionList
     {
         $account = new Account(
             $data->info->accountId,
@@ -102,66 +92,42 @@ class TransactionList
         return $transactionList;
     }
 
-    /**
-     * @return float
-     */
-    public function getOpeningBalance()
+    public function getOpeningBalance(): float
     {
         return $this->openingBalance;
     }
 
-    /**
-     * @return float
-     */
-    public function getClosingBalance()
+    public function getClosingBalance(): float
     {
         return $this->closingBalance;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getDateStart()
+    public function getDateStart(): \DateTimeImmutable
     {
         return $this->dateStart;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
-    public function getDateEnd()
+    public function getDateEnd(): \DateTimeImmutable
     {
         return $this->dateEnd;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdFrom()
+    public function getIdFrom(): int
     {
         return $this->idFrom;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdTo()
+    public function getIdTo(): int
     {
         return $this->idTo;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdLastDownload()
+    public function getIdLastDownload(): ?int
     {
         return $this->idLastDownload;
     }
 
-    /**
-     * @return Account
-     */
-    public function getAccount()
+    public function getAccount(): Account
     {
         return $this->account;
     }
@@ -169,7 +135,7 @@ class TransactionList
     /**
      * @return Transaction[]
      */
-    public function getTransactions()
+    public function getTransactions(): array
     {
         return $this->transactions;
     }

@@ -5,6 +5,7 @@ namespace FioApi;
 
 use FioApi\Exceptions\InternalErrorException;
 use FioApi\Exceptions\TooGreedyException;
+use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class Downloader
@@ -18,24 +19,20 @@ class Downloader
     /** @var string */
     protected $certificatePath;
 
-    /**
-     * @param string $token
-     */
-    public function __construct($token, \GuzzleHttp\ClientInterface $client = null)
-    {
+    public function __construct(
+        string $token,
+        \GuzzleHttp\ClientInterface $client = null
+    ) {
         $this->urlBuilder = new UrlBuilder($token);
         $this->client = $client;
     }
 
-    /**
-     * @param string $path
-     */
-    public function setCertificatePath($path)
+    public function setCertificatePath(string $path)
     {
         $this->certificatePath = $path;
     }
 
-    public function getCertificatePath()
+    public function getCertificatePath(): string
     {
         if ($this->certificatePath) {
             return $this->certificatePath;
@@ -51,10 +48,7 @@ class Downloader
         return __DIR__ . '/keys/Geotrust_PCA_G3_Root.pem';
     }
 
-    /**
-     * @return \GuzzleHttp\ClientInterface
-     */
-    public function getClient()
+    public function getClient(): ClientInterface
     {
         if (!$this->client) {
             $this->client = new \GuzzleHttp\Client();
@@ -62,12 +56,7 @@ class Downloader
         return $this->client;
     }
 
-    /**
-     * @param \DateTimeInterface $from
-     * @param \DateTimeInterface $to
-     * @return TransactionList
-     */
-    public function downloadFromTo(\DateTimeInterface $from, \DateTimeInterface $to)
+    public function downloadFromTo(\DateTimeInterface $from, \DateTimeInterface $to): TransactionList
     {
         $client = $this->getClient();
         $url = $this->urlBuilder->buildPeriodsUrl($from, $to);
@@ -92,11 +81,7 @@ class Downloader
         return TransactionList::create(json_decode($response->getBody()->getContents())->accountStatement);
     }
 
-    /**
-     * @param \DateTimeInterface $since
-     * @return TransactionList
-     */
-    public function downloadSince(\DateTimeInterface $since)
+    public function downloadSince(\DateTimeInterface $since): TransactionList
     {
         return $this->downloadFromTo($since, new \DateTimeImmutable());
     }
