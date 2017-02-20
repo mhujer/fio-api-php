@@ -1,4 +1,5 @@
 <?php
+
 namespace FioApi;
 
 class Transaction
@@ -94,6 +95,7 @@ class Transaction
 
     /**
      * @param \stdClass $data Transaction data from JSON API response
+     *
      * @return Transaction
      */
     public static function create(\stdClass $data)

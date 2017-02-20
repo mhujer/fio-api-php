@@ -6,7 +6,7 @@ class TransactionListTest extends \PHPUnit_Framework_TestCase
 {
     public function testTransactionListValuesAreProperlySet()
     {
-        $transactionList = json_decode(file_get_contents(__DIR__ . '/data/example-response.json'));
+        $transactionList = json_decode(file_get_contents(__DIR__.'/data/example-response.json'));
 
         $transactionList = TransactionList::create($transactionList->accountStatement);
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace FioApi;
 
 use FioApi\Exceptions\InternalErrorException;
@@ -46,7 +47,7 @@ class Downloader
         }
 
         //Key downloaded from https://www.geotrust.com/resources/root-certificates/
-        return __DIR__ . '/keys/Geotrust_PCA_G3_Root.pem';
+        return __DIR__.'/keys/Geotrust_PCA_G3_Root.pem';
     }
 
     /**
@@ -57,12 +58,14 @@ class Downloader
         if (!$this->client) {
             $this->client = new \GuzzleHttp\Client();
         }
+
         return $this->client;
     }
 
     /**
      * @param \DateTime $from
      * @param \DateTime $to
+     *
      * @return TransactionList
      */
     public function downloadFromTo(\DateTime $from, \DateTime $to)
@@ -92,6 +95,7 @@ class Downloader
 
     /**
      * @param \DateTime $since
+     *
      * @return TransactionList
      */
     public function downloadSince(\DateTime $since)
