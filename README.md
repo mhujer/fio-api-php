@@ -33,6 +33,7 @@ foreach ($transactionList->getTransactions() as $transaction) {
 <?php
 require_once 'vendor/autoload.php';
 
+$token = get_your_fio_token();
 $uploader = new FioApi\Uploader($token);
 // currency, iban, bic is not needed
 $account = new FioApi\Account('XXXXXXXXXX', 'ZZZZ', NULL, NULL, NULL);
@@ -53,7 +54,7 @@ $response = $uploader->sendRequest($request);
 echo $response->getStatus();
 ```
 
-#### European payment
+#### European payments
 ```php
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -74,6 +75,36 @@ $tx = FioApi\Transaction::create((object) [
 ]);
 
 $builder = new FioApi\EuroPaymentBuilder();
+$request = $builder->build($account, [$tx]);
+$response = $uploader->sendRequest($request);
+
+echo $response->getStatus();
+echo "\n";
+```
+
+#### International payments (outside EU)
+```php
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$token = get_your_fio_token();
+$uploader = new FioApi\Uploader($token);
+$account = new FioApi\Account('XXXXXXXXXX', 'YYYY', null, null, null);
+$tx = FioApi\Transaction::create((object) [
+    'accountNumber' => 'XXXXXXXXXXXXXXXX',
+    'bankCode'      => 'WWWWWWWWWW',
+    'date'          => new DateTime('2016-05-30'),
+    'amount'        => 2,
+    'currency'      => 'USD',
+    'userMessage'   => 'Donation for homelesses at 6th Street',
+    'comment'       => 'fioapi.test',
+    'benefName'     => 'John Doe',
+    'benefStreet'   => '6th Street',
+    'benefCity'     => 'San Francisco, CA',
+    'benefCountry'  => 'US',
+]);
+
+$builder = new FioApi\InternationalPaymentBuilder();
 $request = $builder->build($account, [$tx]);
 $response = $uploader->sendRequest($request);
 
