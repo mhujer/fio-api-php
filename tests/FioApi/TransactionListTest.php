@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace FioApi;
 
-class TransactionListTest extends \PHPUnit_Framework_TestCase
+class TransactionListTest extends \PHPUnit\Framework\TestCase
 {
     public function testTransactionListValuesAreProperlySet()
     {

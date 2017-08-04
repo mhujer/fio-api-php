@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace FioApi;
 
-class UrlBuilderTest extends \PHPUnit_Framework_TestCase
+class UrlBuilderTest extends \PHPUnit\Framework\TestCase
 {
     public function testMissingTokenExceptionIsThrownForEmptyToken()
     {

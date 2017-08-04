@@ -9,7 +9,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 
-class DownloaderTest extends \PHPUnit_Framework_TestCase
+class DownloaderTest extends \PHPUnit\Framework\TestCase
 {
     public function testNotRespectingTheTimeoutResultsInTooGreedyException()
     {
