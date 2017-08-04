@@ -40,10 +40,10 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 Changelog
 ----------
 
-## 4.0.0 (201X-XX-XX)
-- minimal supported version is PHP 7.1
-- `DateTime` replaced with `DateTimeImmutable` (or `DateTimeInterface`)
-- strict types and primitive typehints are used everywhere
+## 4.0.0 (2017-08-04)
+- [#9](https://github.com/mhujer/fio-api-php/pull/9) minimal supported version is PHP 7.1
+- [#9](https://github.com/mhujer/fio-api-php/pull/9)`DateTime` replaced with `DateTimeImmutable` (or `DateTimeInterface`)
+- [#9](https://github.com/mhujer/fio-api-php/pull/9) strict types and primitive typehints are used everywhere
 
 ## 3.0.0 (2016-11-24)
 - dropped support for PHP <7
