@@ -1,12 +1,14 @@
 <?php
+declare(strict_types = 1);
+
 namespace FioApi;
 
 class Transaction
 {
-    /** @var int */
+    /** @var string */
     protected $id;
 
-    /** @var \DateTime */
+    /** @var \DateTimeImmutable */
     protected $date;
 
     /** @var float */
@@ -15,63 +17,63 @@ class Transaction
     /** @var string */
     protected $currency;
 
-    /** @var string */
+    /** @var string|null */
     protected $senderAccountNumber;
 
-    /** @var string */
+    /** @var string|null */
     protected $senderBankCode;
 
-    /** @var string */
+    /** @var string|null */
     protected $senderBankName;
 
-    /** @var int */
+    /** @var string|null */
     protected $constantSymbol;
 
-    /** @var string */
+    /** @var string|null */
     protected $variableSymbol;
 
-    /** @var int */
+    /** @var string|null */
     protected $specificSymbol;
 
-    /** @var string */
+    /** @var string|null */
     protected $userIdentity;
 
-    /** @var string */
+    /** @var string|null */
     protected $userMessage;
 
     /** @var string */
     protected $transactionType;
 
-    /** @var string */
+    /** @var string|null */
     protected $performedBy;
 
-    /** @var string */
+    /** @var string|null */
     protected $comment;
 
-    /** @var string */
+    /** @var float|null */
     protected $paymentOrderId;
 
-    /** @var string */
+    /** @var string|null */
     protected $specification;
 
     protected function __construct(
-        $id,
-        $date,
-        $amount,
-        $currency,
-        $senderAccountNumber,
-        $senderBankCode,
-        $senderBankName,
-        $constantSymbol,
-        $variableSymbol,
-        $specificSymbol,
-        $userIdentity,
-        $userMessage,
-        $transactionType,
-        $performedBy,
-        $comment,
-        $paymentOrderId,
-        $specification
+        string $id,
+        \DateTimeImmutable $date,
+        float $amount,
+        string $currency,
+        ?string $senderAccountNumber,
+        ?string $senderBankCode,
+        ?string $senderBankName,
+        ?string $constantSymbol,
+        ?string $variableSymbol,
+        ?string $specificSymbol,
+        ?string $userIdentity,
+        ?string $userMessage,
+        string $transactionType,
+        ?string $performedBy,
+        ?string $comment,
+        ?float $paymentOrderId,
+        ?string $specification
     ) {
         $this->id = $id;
         $this->date = $date;
@@ -96,11 +98,11 @@ class Transaction
      * @param \stdClass $data Transaction data from JSON API response
      * @return Transaction
      */
-    public static function create(\stdClass $data)
+    public static function create(\stdClass $data): Transaction
     {
         return new self(
-            $data->column22->value, //ID pohybu
-            new \DateTime($data->column0->value), //Datum
+            (string) $data->column22->value, //ID pohybu
+            new \DateTimeImmutable($data->column0->value), //Datum
             $data->column1->value, //Objem
             $data->column14->value, //Měna
             !empty($data->column2) ? $data->column2->value : null, //Protiúčet
@@ -119,138 +121,87 @@ class Transaction
         );
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getDate()
+    public function getDate(): \DateTimeImmutable
     {
         return $this->date;
     }
 
-    /**
-     * @return float
-     */
-    public function getAmount()
+    public function getAmount(): float
     {
         return $this->amount;
     }
 
-    /**
-     * @return string
-     */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @return string
-     */
-    public function getSenderAccountNumber()
+    public function getSenderAccountNumber(): ?string
     {
         return $this->senderAccountNumber;
     }
 
-    /**
-     * @return string
-     */
-    public function getSenderBankCode()
+    public function getSenderBankCode(): ?string
     {
         return $this->senderBankCode;
     }
 
-    /**
-     * @return string
-     */
-    public function getSenderBankName()
+    public function getSenderBankName(): ?string
     {
         return $this->senderBankName;
     }
 
-    /**
-     * @return int
-     */
-    public function getConstantSymbol()
+    public function getConstantSymbol(): ?string
     {
         return $this->constantSymbol;
     }
 
-    /**
-     * @return string
-     */
-    public function getVariableSymbol()
+    public function getVariableSymbol(): ?string
     {
         return $this->variableSymbol;
     }
 
-    /**
-     * @return int
-     */
-    public function getSpecificSymbol()
+    public function getSpecificSymbol(): ?string
     {
         return $this->specificSymbol;
     }
 
-    /**
-     * @return string
-     */
-    public function getUserIdentity()
+    public function getUserIdentity(): ?string
     {
         return $this->userIdentity;
     }
 
-    /**
-     * @return string
-     */
-    public function getUserMessage()
+    public function getUserMessage(): ?string
     {
         return $this->userMessage;
     }
 
-    /**
-     * @return string
-     */
-    public function getTransactionType()
+    public function getTransactionType(): string
     {
         return $this->transactionType;
     }
 
-    /**
-     * @return string
-     */
-    public function getPerformedBy()
+    public function getPerformedBy(): ?string
     {
         return $this->performedBy;
     }
 
-    /**
-     * @return string
-     */
-    public function getComment()
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    /**
-     * @return string
-     */
-    public function getPaymentOrderId()
+    public function getPaymentOrderId(): ?float
     {
         return $this->paymentOrderId;
     }
 
-    /**
-     * @return string
-     */
-    public function getSpecification()
+    public function getSpecification(): ?string
     {
         return $this->specification;
     }

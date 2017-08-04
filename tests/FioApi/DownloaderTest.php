@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace FioApi;
 
@@ -10,41 +11,41 @@ use GuzzleHttp\Psr7\Response;
 
 class DownloaderTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @expectedException \FioApi\Exceptions\TooGreedyException
-     */
     public function testNotRespectingTheTimeoutResultsInTooGreedyException()
     {
         $handler = HandlerStack::create(new MockHandler([
             new Response(409),
         ]));
         $downloader = new Downloader('testToken', new Client(['handler' => $handler]));
-        $downloader->downloadSince(new \DateTime('-1 week'));
+
+        $this->expectException(\FioApi\Exceptions\TooGreedyException::class);
+
+        $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
     }
 
-    /**
-     * @expectedException \FioApi\Exceptions\InternalErrorException
-     */
     public function testInvalidTokenResultsInInternalErrorException()
     {
         $handler = HandlerStack::create(new MockHandler([
             new Response(500),
         ]));
         $downloader = new Downloader('invalidToken', new Client(['handler' => $handler]));
-        $downloader->downloadSince(new \DateTime('-1 week'));
+
+        $this->expectException(\FioApi\Exceptions\InternalErrorException::class);
+
+        $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
     }
 
-    /**
-     * @expectedException \GuzzleHttp\Exception\BadResponseException
-     * @expectedExceptionCode 418
-     */
     public function testUnknownResponseCodePassesOriginalException()
     {
         $handler = HandlerStack::create(new MockHandler([
             new Response(418),
         ]));
         $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
-        $downloader->downloadSince(new \DateTime('-1 week'));
+
+        $this->expectException(\GuzzleHttp\Exception\BadResponseException::class);
+        $this->expectExceptionCode(418);
+
+        $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
     }
 
     public function testDownloaderDownloadsData()
@@ -53,14 +54,16 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
             new Response(200, [], file_get_contents(__DIR__ . '/data/example-response.json')),
         ]));
         $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
-        $transactionList = $downloader->downloadSince(new \DateTime('-1 week'));
-        $this->assertInstanceOf('\FioApi\TransactionList', $transactionList);
+
+        $transactionList = $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
+
+        $this->assertInstanceOf(TransactionList::class, $transactionList);
     }
 
     public function testDownloaderSetCertificatePath()
     {
         $downloader = new Downloader('validToken');
         $downloader->setCertificatePath('foo.pem');
-        $this->assertEquals('foo.pem', $downloader->getCertificatePath());
+        $this->assertSame('foo.pem', $downloader->getCertificatePath());
     }
 }
