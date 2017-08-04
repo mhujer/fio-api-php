@@ -5,7 +5,7 @@ namespace FioApi;
 
 class Transaction
 {
-    /** @var float */
+    /** @var string */
     protected $id;
 
     /** @var \DateTimeImmutable */
@@ -57,7 +57,7 @@ class Transaction
     protected $specification;
 
     protected function __construct(
-        float $id,
+        string $id,
         \DateTimeImmutable $date,
         float $amount,
         string $currency,
@@ -101,7 +101,7 @@ class Transaction
     public static function create(\stdClass $data): Transaction
     {
         return new self(
-            $data->column22->value, //ID pohybu
+            (string) $data->column22->value, //ID pohybu
             new \DateTimeImmutable($data->column0->value), //Datum
             $data->column1->value, //Objem
             $data->column14->value, //Měna
@@ -121,7 +121,7 @@ class Transaction
         );
     }
 
-    public function getId(): float
+    public function getId(): string
     {
         return $this->id;
     }
