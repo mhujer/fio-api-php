@@ -36,6 +36,10 @@
     }
   },
   "scripts": {
+    "ci": [
+      "@phpcs",
+      "@test"
+    ],
     "test": "phpunit",
     "phpcs": "phpcs --standard=PSR2 src && phpcs --standard=PSR2 tests"
   }

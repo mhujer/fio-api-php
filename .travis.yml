@@ -13,10 +13,7 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - composer test
-
-  # phpcs only on latest PHP
-  - if [[ $TRAVIS_PHP_VERSION = '7.1' ]]; then composer phpcs; fi
+  - composer ci
 
 after_script:
   - php vendor/bin/coveralls -v
