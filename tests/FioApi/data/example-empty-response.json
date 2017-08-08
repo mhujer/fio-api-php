@@ -1,0 +1,23 @@
+{
+  "accountStatement": {
+    "info": {
+      "accountId": "260000000",
+      "bankId": "2010",
+      "currency": "EUR",
+      "iban": "CZ652010000000000",
+      "bic": "FIOBCZPPXXX",
+      "openingBalance": 0.00,
+      "closingBalance": 0.00,
+      "dateStart": "2017-08-06+0200",
+      "dateEnd": "2017-08-08+0200",
+      "yearList": null,
+      "idList": null,
+      "idFrom": null,
+      "idTo": null,
+      "idLastDownload": null
+    },
+    "transactionList": {
+      "transaction": []
+    }
+  }
+}
