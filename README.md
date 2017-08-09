@@ -40,6 +40,9 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 Changelog
 ----------
 
+## 4.0.1 (2017-08-09)
+- [#12](https://github.com/mhujer/fio-api-php/pull/12) handle empty transaction list  (thx @soukicz!)
+
 ## 4.0.0 (2017-08-04)
 - [#9](https://github.com/mhujer/fio-api-php/pull/9) minimal supported version is PHP 7.1
 - [#9](https://github.com/mhujer/fio-api-php/pull/9)`DateTime` replaced with `DateTimeImmutable` (or `DateTimeInterface`)
