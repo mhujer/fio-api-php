@@ -21,4 +21,21 @@ class TransactionListTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Account::class, $transactionList->getAccount());
         $this->assertInstanceOf(Transaction::class, $transactionList->getTransactions()[0]);
     }
+
+    public function testEmptyTransactionList()
+    {
+        $transactionList = json_decode(file_get_contents(__DIR__ . '/data/example-empty-response.json'));
+
+        $transactionList = TransactionList::create($transactionList->accountStatement);
+
+        $this->assertSame(0.0, $transactionList->getOpeningBalance());
+        $this->assertSame(0.0, $transactionList->getClosingBalance());
+        $this->assertEquals(new \DateTimeImmutable('2017-08-06+0200'), $transactionList->getDateStart());
+        $this->assertEquals(new \DateTimeImmutable('2017-08-08+0200'), $transactionList->getDateEnd());
+        $this->assertNull($transactionList->getIdFrom());
+        $this->assertNull($transactionList->getIdTo());
+        $this->assertNull($transactionList->getIdLastDownload());
+        $this->assertInstanceOf(Account::class, $transactionList->getAccount());
+        $this->assertCount(0, $transactionList->getTransactions());
+    }
 }
