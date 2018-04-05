@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace FioApi;
 
-use FioApi\Exceptions;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -58,6 +57,29 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
         $transactionList = $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
 
         $this->assertInstanceOf(TransactionList::class, $transactionList);
+    }
+
+    public function testDownloaderDownloadsLast()
+    {
+        $handler = HandlerStack::create(new MockHandler([
+            new Response(200, [], file_get_contents(__DIR__ . '/data/example-response.json')),
+        ]));
+        $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
+
+        $transactionList = $downloader->downloadLast();
+
+        $this->assertInstanceOf(TransactionList::class, $transactionList);
+    }
+
+    public function testDownloaderSetsLastId()
+    {
+        $handler = HandlerStack::create(new MockHandler([
+            new Response(200),
+        ]));
+        $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
+
+        $downloader->setLastId('123456');
+        $this->addToAssertionCount(1);
     }
 
     public function testDownloaderSetCertificatePath()
