@@ -53,7 +53,7 @@ class UrlBuilder
     public function buildSetLastIdUrl(string $id): string
     {
         return sprintf(
-            self::BASE_URL . 'set-last-id/%s/%s',
+            self::BASE_URL . 'set-last-id/%s/%s/',
             $this->getToken(),
             $id
         );
