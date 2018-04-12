@@ -25,6 +25,12 @@ foreach ($transactionList->getTransactions() as $transaction) {
 
 ```
 
+#### Available endpoints:
+- `downloadFromTo(DateTimeInterface $from, DateTimeInterface $to): TransactionList`
+- `downloadSince(DateTimeInterface $since): TransactionList`
+- `downloadLast(): TransactionList`
+- `setLastId(string $id)` - sets the last downloaded ID through the API
+
 Requirements
 ------------
 Fio API PHP works with PHP 7 or higher.
