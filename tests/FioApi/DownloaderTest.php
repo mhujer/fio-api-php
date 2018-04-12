@@ -6,6 +6,7 @@ namespace FioApi;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 
 class DownloaderTest extends \PHPUnit\Framework\TestCase
@@ -73,13 +74,23 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
 
     public function testDownloaderSetsLastId()
     {
+        $container = [];
+        $history = Middleware::history($container);
+
         $handler = HandlerStack::create(new MockHandler([
             new Response(200),
         ]));
+        $handler->push($history);
         $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
 
         $downloader->setLastId('123456');
-        $this->addToAssertionCount(1);
+
+        $this->assertCount(1, $container);
+
+        /** @var \GuzzleHttp\Psr7\Request $request */
+        $request = $container[0]['request'];
+
+        $this->assertSame('https://www.fio.cz/ib_api/rest/set-last-id/validToken/123456/', (string) $request->getUri());
     }
 
     public function testDownloaderSetCertificatePath()
