@@ -46,6 +46,9 @@ Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
 Changelog
 ----------
 
+## 4.1.0 (2018-04-13)
+- [#13](https://github.com/mhujer/fio-api-php/pull/13) Support /last and /set-last-id endpoints (thx @jiripudil!)
+
 ## 4.0.1 (2017-08-09)
 - [#12](https://github.com/mhujer/fio-api-php/pull/12) handle empty transaction list  (thx @soukicz!)
 
