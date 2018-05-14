@@ -33,7 +33,7 @@ foreach ($transactionList->getTransactions() as $transaction) {
 
 Requirements
 ------------
-Fio API PHP works with PHP 7 or higher.
+Fio API PHP works with PHP 7.1 or higher.
 
 Submitting bugs and feature requests
 ------------------------------------
