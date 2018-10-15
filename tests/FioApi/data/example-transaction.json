@@ -24,7 +24,11 @@
     "name": "Protiúčet",
     "id": 2
   },
-  "column10": null,
+  "column10": {
+    "value": "HUJER MARTIN",
+    "name": "Název protiúčtu",
+    "id": 10
+  },
   "column3": {
     "value": "2100",
     "name": "Kód banky",
