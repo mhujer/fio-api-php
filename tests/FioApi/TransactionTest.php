@@ -17,6 +17,7 @@ class TransactionTest extends \PHPUnit\Framework\TestCase
         $this->assertSame('CZK', $transaction->getCurrency());
         $this->assertSame('214498596', $transaction->getSenderAccountNumber());
         $this->assertSame('2100', $transaction->getSenderBankCode());
+        $this->assertSame('HUJER MARTIN', $transaction->getSenderName());
         $this->assertSame('0', $transaction->getVariableSymbol());
         $this->assertSame(null, $transaction->getConstantSymbol());
         $this->assertSame(null, $transaction->getSpecificSymbol());
