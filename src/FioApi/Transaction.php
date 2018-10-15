@@ -27,6 +27,9 @@ class Transaction
     protected $senderBankName;
 
     /** @var string|null */
+    protected $senderName;
+
+    /** @var string|null */
     protected $constantSymbol;
 
     /** @var string|null */
@@ -64,6 +67,7 @@ class Transaction
         ?string $senderAccountNumber,
         ?string $senderBankCode,
         ?string $senderBankName,
+        ?string $senderName,
         ?string $constantSymbol,
         ?string $variableSymbol,
         ?string $specificSymbol,
@@ -82,6 +86,7 @@ class Transaction
         $this->senderAccountNumber = $senderAccountNumber;
         $this->senderBankCode = $senderBankCode;
         $this->senderBankName = $senderBankName;
+        $this->senderName = $senderName;
         $this->constantSymbol = $constantSymbol;
         $this->variableSymbol = $variableSymbol;
         $this->specificSymbol = $specificSymbol;
@@ -108,6 +113,7 @@ class Transaction
             !empty($data->column2) ? $data->column2->value : null, //Protiúčet
             !empty($data->column3) ? $data->column3->value : null, //Kód banky
             !empty($data->column12) ? $data->column12->value : null, //Název banky
+            !empty($data->column10) ? $data->column10->value : null, //Název protiúčtu
             !empty($data->column4) ? $data->column4->value : null, //KS
             !empty($data->column5) ? $data->column5->value : null, //VS
             !empty($data->column6) ? $data->column6->value : null, //SS
@@ -154,6 +160,11 @@ class Transaction
     public function getSenderBankName(): ?string
     {
         return $this->senderBankName;
+    }
+
+    public function getSenderName(): ?string
+    {
+        return $this->senderName;
     }
 
     public function getConstantSymbol(): ?string
