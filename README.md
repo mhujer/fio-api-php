@@ -41,10 +41,13 @@ Bugs and feature request are tracked on [GitHub](https://github.com/mhujer/fio-a
 
 Author
 ------
-Martin Hujer - <mhujer@gmail.com> - <https://www.martinhujer.cz>
+Martin Hujer - <https://www.martinhujer.cz>
 
 Changelog
 ----------
+
+## 4.1.1 (2019-01-28)
+- [#17](https://github.com/mhujer/fio-api-php/pull/17) added senderName (nazev protiuctu) (thx @jan-stanek!)
 
 ## 4.1.0 (2018-04-13)
 - [#13](https://github.com/mhujer/fio-api-php/pull/13) Support /last and /set-last-id endpoints (thx @jiripudil!)
