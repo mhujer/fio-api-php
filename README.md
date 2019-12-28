@@ -46,6 +46,9 @@ Martin Hujer - <https://www.martinhujer.cz>
 Changelog
 ----------
 
+## 4.1.2 (2019-12-28)
+- [#19](https://github.com/mhujer/fio-api-php/pull/19) gracefully handle response with empty column8 (thx @fmasa!)
+
 ## 4.1.1 (2019-01-28)
 - [#17](https://github.com/mhujer/fio-api-php/pull/17) added senderName (nazev protiuctu) (thx @jan-stanek!)
 
