@@ -119,7 +119,7 @@ class Transaction
             !empty($data->column6) ? $data->column6->value : null, //SS
             !empty($data->column7) ? $data->column7->value : null, //Uživatelská identifikace
             !empty($data->column16) ? $data->column16->value : null, //Zpráva pro příjemce
-            $data->column8->value, //Typ
+            !empty($data->column8) ? $data->column8->value : '', //Typ
             !empty($data->column9) ? $data->column9->value : null, //Provedl
             !empty($data->column25) ? $data->column25->value : null, //Komentář
             !empty($data->column17) ? $data->column17->value : null, //ID pokynu
