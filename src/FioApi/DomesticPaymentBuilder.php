@@ -29,7 +29,7 @@ class DomesticPaymentBuilder extends AbstractPaymentBuilder implements PaymentBu
         $nodes = [
             'accountFrom'         => $account->getAccountNumber(),
             'currency'            => $tx->getCurrency(),
-            'amount'              => number_format($tx->getAmount(), 2),
+            'amount'              => number_format($tx->getAmount(), 2, '.', ''),
             'accountTo'           => $tx->getAccountNumber(),
             'bankCode'            => $tx->getBankCode(),
             'ks'                  => $tx->getConstantSymbol(),

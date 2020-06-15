@@ -29,7 +29,7 @@ class InternationalPaymentBuilder extends AbstractPaymentBuilder implements Paym
         $nodes = [
             'accountFrom'      => $account->getAccountNumber(),
             'currency'         => $tx->getCurrency(),
-            'amount'           => number_format($tx->getAmount(), 2),
+            'amount'           => number_format($tx->getAmount(), 2, '.', ''),
             'accountTo'        => $tx->getAccountNumber(),
             'ks'               => $tx->getConstantSymbol(),
             'vs'               => $tx->getVariableSymbol(),
