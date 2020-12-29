@@ -1,4 +1,4 @@
-# Fio API PHP implemention [![Build Status](https://travis-ci.org/mhujer/fio-api-php.svg?branch=master)](https://travis-ci.org/mhujer/fio-api-php) [![Build Status Windows](https://ci.appveyor.com/api/projects/status/github/mhujer/fio-api-php?branch=master&svg=true)](https://ci.appveyor.com/project/mhujer/fio-api-php/branch/master)
+# Fio API PHP implemention
 
 [![Latest Stable Version](https://poser.pugx.org/mhujer/fio-api-php/version.png)](https://packagist.org/packages/mhujer/fio-api-php) [![Total Downloads](https://poser.pugx.org/mhujer/fio-api-php/downloads.png)](https://packagist.org/packages/mhujer/fio-api-php) [![License](https://poser.pugx.org/mhujer/fio-api-php/license.svg)](https://packagist.org/packages/mhujer/fio-api-php) [![Coverage Status](https://coveralls.io/repos/mhujer/fio-api-php/badge.svg?branch=master)](https://coveralls.io/r/mhujer/fio-api-php?branch=master)
 
@@ -33,7 +33,7 @@ foreach ($transactionList->getTransactions() as $transaction) {
 
 Requirements
 ------------
-Fio API PHP works with PHP 7.1 or higher.
+Fio API PHP works with PHP 7.4 or higher.
 
 Submitting bugs and feature requests
 ------------------------------------

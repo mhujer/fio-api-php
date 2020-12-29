@@ -8,31 +8,28 @@ jobs:
             fail-fast: false
             matrix:
                 operating-system: [ ubuntu-latest ]
-                php-versions: [ '7.1', '7.2' ] # '7.3', '7.4'
+                php-versions: [ '7.4', '8.0' ]
                 composer-dependencies: [ '', '--prefer-lowest' ]
                 composer-version: [ 'v1' ]
                 extra-label: [ '' ]
-                #include:
-                #    # PHP 8.0
-                #    -   php-versions: '8.0'
-                #        operating-system: ubuntu-latest
-                #        composer-dependencies: '--prefer-lowest'
+                include:
 
-                #    -   php-versions: '8.0'
-                #        operating-system: ubuntu-latest
-                #        composer-dependencies: ''
+                    # Composer v2
+                    -   php-versions: '7.4'
+                        operating-system: ubuntu-latest
+                        composer-version: 'v2'
+                        extra-label: 'Composer v2'
 
-                #    # Composer v2
-                #    -   php-versions: '7.4'
-                #        operating-system: ubuntu-latest
-                #        composer-version: 'v2'
-                #        extra-label: 'Composer v2'
-
-                #    # Windows
-                #    -   php-versions: '7.4'
-                #        operating-system: windows-latest
+                    # Windows
+                    -   php-versions: '7.4'
+                        operating-system: windows-latest
+                        coverage: xdebug
 
         steps:
+            # see https://github.com/actions/checkout/issues/226#issue-606867805
+            -   name: Prepare git
+                run: git config --global core.autocrlf false
+
             -   name: Checkout
                 uses: actions/checkout@v2
 
@@ -42,6 +39,7 @@ jobs:
                     php-version: ${{ matrix.php-versions }}
                     ini-values: memory_limit=-1
                     tools: composer:${{ matrix.composer-version }}
+                    coverage: ${{ matrix.coverage }}
 
             -   name: Get composer cache directory
                 id: composer-cache
@@ -57,11 +55,12 @@ jobs:
             -   name: Install Composer dependencies
                 run: composer update --no-progress --prefer-dist --optimize-autoloader ${{ matrix.composer-dependencies }}
 
-            -   name: prepare logs dir
-                run: mkdir -p build/logs
-
             -   name: Run CI Build
                 run: composer ci
 
-            -   name: Report code coverage
-                run: php vendor/bin/coveralls -v
+            - name: Upload coverage results to Coveralls
+              env:
+                  COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  composer global require php-coveralls/php-coveralls
+                  php-coveralls --coverage_clover=build/logs/clover.xml -v
