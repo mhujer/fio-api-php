@@ -58,4 +58,9 @@ class UrlBuilder
             $id
         );
     }
+
+    public function buildUploadUrl(): string
+    {
+        return self::BASE_URL . 'import/';
+    }
 }

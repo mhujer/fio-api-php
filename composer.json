@@ -20,6 +20,9 @@
   "require": {
     "php": ">=7.4",
     "ext-curl": "*",
+    "ext-mbstring": "*",
+    "ext-simplexml": "*",
+    "ext-xmlwriter": "*",
     "guzzlehttp/guzzle": "~6.1|~7.0"
   },
   "require-dev": {
