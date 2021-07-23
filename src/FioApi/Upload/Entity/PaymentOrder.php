@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\Entity;
 
 use FioApi\Exceptions\UnexpectedPaymentOrderValueException;
 
@@ -17,7 +17,6 @@ abstract class PaymentOrder
     protected string $date;
     protected string $comment;
     protected int $paymentReason;
-
 
     protected function __construct(
         string $currency,

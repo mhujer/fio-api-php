@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\Entity;
 
 class PaymentOrderList
 {
@@ -30,5 +30,4 @@ class PaymentOrderList
     {
         $this->paymentOrders = [];
     }
-
 }

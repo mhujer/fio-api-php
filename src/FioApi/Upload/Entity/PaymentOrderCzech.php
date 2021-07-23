@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\Entity;
 
 use FioApi\Exceptions\UnexpectedPaymentOrderValueException;
 
@@ -20,7 +20,6 @@ class PaymentOrderCzech extends PaymentOrder
     protected string $bankCode;
     protected string $messageForRecipient;
     protected int $paymentType;
-
 
     public function __construct(
         string $currency,
@@ -60,11 +59,15 @@ class PaymentOrderCzech extends PaymentOrder
     }
 
     public function toArray(): array {
-        return array_merge(parent::toArray(), $this->symbolsToArray(), [
-            'bankCode' => $this->bankCode ?? null,
-            'messageForRecipient' => $this->messageForRecipient ?? null,
-            'paymentType' => $this->paymentType ?? null,
-        ]);
+        return array_merge(
+            parent::toArray(),
+            $this->symbolsToArray(),
+            [
+                'bankCode' => $this->bankCode ?? null,
+                'messageForRecipient' => $this->messageForRecipient ?? null,
+                'paymentType' => $this->paymentType ?? null
+            ]
+        );
     }
 
     /** @return static */
@@ -115,5 +118,4 @@ class PaymentOrderCzech extends PaymentOrder
         }
         return $code;
     }
-
 }

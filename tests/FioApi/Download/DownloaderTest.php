@@ -1,8 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Download;
 
+use FioApi\Download\Entity\TransactionList;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;

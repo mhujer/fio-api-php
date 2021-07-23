@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\Entity;
 
 class PaymentOrderEuro extends PaymentOrderForeign
 {
@@ -13,7 +13,6 @@ class PaymentOrderEuro extends PaymentOrderForeign
     protected const PAYMENT_TYPES = [self::PAYMENT_TYPE_STANDARD, self::PAYMENT_TYPE_PRIORITY];
 
     protected int $paymentType;
-
 
     public function __construct(
         string $currency,
@@ -70,9 +69,13 @@ class PaymentOrderEuro extends PaymentOrderForeign
     }
 
     public function toArray(): array {
-        return array_merge(parent::toArray(), $this->symbolsToArray(), [
-            'paymentType' => $this->paymentType ?? null,
-        ]);
+        return array_merge(
+            parent::toArray(),
+            $this->symbolsToArray(),
+            [
+                'paymentType' => $this->paymentType ?? null
+            ]
+        );
     }
 
     /** @return static */

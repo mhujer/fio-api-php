@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\Entity;
 
 use FioApi\Exceptions\UnexpectedPaymentOrderValueException;
 
@@ -25,7 +25,6 @@ abstract class PaymentOrderForeign extends PaymentOrder
     protected string $remittanceInfo2;
     protected string $remittanceInfo3;
 
-
     protected function __construct(
         string $currency,
         float $amount,
@@ -48,16 +47,19 @@ abstract class PaymentOrderForeign extends PaymentOrder
     }
 
     public function toArray(): array {
-        return array_merge(parent::toArray(), [
-            'bic' => $this->bic ?? null,
-            'benefName' => $this->benefName ?? null,
-            'benefStreet' => $this->benefStreet ?? null,
-            'benefCity' => $this->benefCity ?? null,
-            'benefCountry' => $this->benefCountry ?? null,
-            'remittanceInfo1' => $this->remittanceInfo1 ?? null,
-            'remittanceInfo2' => $this->remittanceInfo2 ?? null,
-            'remittanceInfo3' => $this->remittanceInfo3 ?? null,
-        ]);
+        return array_merge(
+            parent::toArray(),
+            [
+                'bic' => $this->bic ?? null,
+                'benefName' => $this->benefName ?? null,
+                'benefStreet' => $this->benefStreet ?? null,
+                'benefCity' => $this->benefCity ?? null,
+                'benefCountry' => $this->benefCountry ?? null,
+                'remittanceInfo1' => $this->remittanceInfo1 ?? null,
+                'remittanceInfo2' => $this->remittanceInfo2 ?? null,
+                'remittanceInfo3' => $this->remittanceInfo3 ?? null
+            ]
+        );
     }
 
     /** @return static */
@@ -115,7 +117,6 @@ abstract class PaymentOrderForeign extends PaymentOrder
         $this->remittanceInfo3 = static::validateStringMaxLength($remittanceInfo3, static::REMITTANCE_INFO_MAX_LENGTH);
         return $this;
     }
-
 
     protected static function validateAccountTo(string $accountTo): string
     {

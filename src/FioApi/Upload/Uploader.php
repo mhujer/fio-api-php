@@ -1,10 +1,16 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload;
 
 use FioApi\Exceptions\MissingPaymentOrderException;
 use FioApi\Exceptions\UnexpectedPaymentOrderValueException;
+use FioApi\Upload\Entity\PaymentOrderList;
+use FioApi\Transferrer;
+use FioApi\Upload\FileBuilder\FileBuilder;
+use FioApi\Upload\FileBuilder\XmlFileBuilder;
+use FioApi\Upload\Entity\PaymentOrder;
+use FioApi\Upload\Entity\UploadResponse;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -32,7 +38,7 @@ class Uploader extends Transferrer
         $this->getPaymentOrderList()->addPaymentOrder($paymentOrder);
     }
 
-    public function uploadPaymentOrders(): UploadResponse
+    public function uploadPaymentOrders(): Entity\UploadResponse
     {
         if ($this->getPaymentOrderList()->isEmpty()) {
             throw new MissingPaymentOrderException('You have to add at least one payment order before uploading.');

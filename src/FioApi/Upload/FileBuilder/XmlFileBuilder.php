@@ -1,9 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\FileBuilder;
 
 use FioApi\Exceptions\UnexpectedPaymentOrderClassException;
+use FioApi\Upload\Entity\PaymentOrder;
+use FioApi\Upload\Entity\PaymentOrderCzech;
+use FioApi\Upload\Entity\PaymentOrderEuro;
+use FioApi\Upload\Entity\PaymentOrderInternational;
+use FioApi\Upload\Entity\PaymentOrderList;
 use XMLWriter;
 
 class XmlFileBuilder implements FileBuilder

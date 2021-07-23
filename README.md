@@ -16,7 +16,7 @@ Usage
 <?php
 require_once 'vendor/autoload.php';
 
-$downloader = new FioApi\Downloader('TOKEN@todo');
+$downloader = new FioApi\Download\Downloader('TOKEN@todo');
 $transactionList = $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
 
 foreach ($transactionList->getTransactions() as $transaction) {

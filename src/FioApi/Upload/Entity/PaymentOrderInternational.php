@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\Entity;
 
 class PaymentOrderInternational extends PaymentOrderForeign
 {
@@ -13,7 +13,6 @@ class PaymentOrderInternational extends PaymentOrderForeign
 
     protected int $detailsOfCharges;
     protected string $remittanceInfo4;
-
 
     public function __construct(
         string $currency,
@@ -48,10 +47,13 @@ class PaymentOrderInternational extends PaymentOrderForeign
     }
 
     public function toArray(): array {
-        return array_merge(parent::toArray(), [
-            'detailsOfCharges' => $this->detailsOfCharges ?? null,
-            'remittanceInfo4' => $this->remittanceInfo4 ?? null,
-        ]);
+        return array_merge(
+            parent::toArray(),
+            [
+                'detailsOfCharges' => $this->detailsOfCharges ?? null,
+                'remittanceInfo4' => $this->remittanceInfo4 ?? null
+            ]
+        );
     }
 
     /** @return static */

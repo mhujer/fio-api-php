@@ -1,7 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Upload\FileBuilder;
+
+use FioApi\Upload\Entity\PaymentOrderList;
 
 interface FileBuilder
 {
