@@ -133,7 +133,7 @@ class PaymentOrderInternationalTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    public function testTooLongBenefNameResultsInUnexpectedPaymentOrderValueException()
+    public function testInvalidBenefNameResultsInUnexpectedPaymentOrderValueException()
     {
         $this->expectException(UnexpectedPaymentOrderValueException::class);
 

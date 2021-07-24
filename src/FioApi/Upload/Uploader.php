@@ -82,12 +82,12 @@ class Uploader extends Transferrer
                     'contents' => $this->getFileBuilder()->getFileType()
                 ],
                 [
-                    'name' => 'file',
+                    'name'     => 'file',
                     'contents' => $this->getFileBuilder()->createFromPaymentOrderList($this->getPaymentOrderList(), $this->accountFrom),
                     'filename' => 'request.' . $this->getFileBuilder()->getFileType()
                 ],
                 [
-                    'name' => 'lng',
+                    'name'     => 'lng',
                     'contents' => 'en'
                 ],
             ]

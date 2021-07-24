@@ -72,7 +72,7 @@ class PaymentOrderEuro extends PaymentOrderForeign
         return array_merge(
             parent::toArray(),
             $this->symbolsToArray(),
-            $this->foreignPropertiesToArray(),
+            $this->foreignOrderPropertiesToArray(),
             [
                 static::PAYMENT_REASON_NAME => $this->getPaymentReason(),
                 static::PAYMENT_TYPE_NAME => $this->getPaymentType(),

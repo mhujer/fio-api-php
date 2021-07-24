@@ -55,7 +55,7 @@ abstract class PaymentOrderForeign extends PaymentOrder
         }
     }
 
-    protected function foreignPropertiesToArray(): array {
+    protected function foreignOrderPropertiesToArray(): array {
         return [
             static::BIC_NAME => $this->getBic(),
             static::DATE_NAME => $this->getDate(),

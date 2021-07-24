@@ -51,7 +51,7 @@ class PaymentOrderInternational extends PaymentOrderForeign
     public function toArray(): array {
         return array_merge(
             parent::toArray(),
-            $this->foreignPropertiesToArray(),
+            $this->foreignOrderPropertiesToArray(),
             [
                 static::REMITTANCE_INFO_4_NAME => $this->getRemittanceInfo4(),
                 static::DETAILS_OF_CHARGES_NAME => $this->getDetailsOfCharges(),
