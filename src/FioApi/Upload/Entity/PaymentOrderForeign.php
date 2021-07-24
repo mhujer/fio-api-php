@@ -7,6 +7,15 @@ use FioApi\Exceptions\UnexpectedPaymentOrderValueException;
 
 abstract class PaymentOrderForeign extends PaymentOrder
 {
+    protected const BIC_NAME = 'bic';
+    protected const BENEF_NAME_NAME = 'benefName';
+    protected const BENEF_STREET_NAME = 'benefStreet';
+    protected const BENEF_CITY_NAME = 'benefCity';
+    protected const BENEF_COUNTRY_NAME = 'benefCountry';
+    protected const REMITTANCE_INFO_1_NAME = 'remittanceInfo1';
+    protected const REMITTANCE_INFO_2_NAME = 'remittanceInfo2';
+    protected const REMITTANCE_INFO_3_NAME = 'remittanceInfo3';
+
     protected const COMMENT_MAX_LENGTH = 140;
     protected const ACCOUNT_MAX_LENGTH = 34;
     protected const BIC_LENGTH = 11;
@@ -46,20 +55,44 @@ abstract class PaymentOrderForeign extends PaymentOrder
         }
     }
 
-    public function toArray(): array {
-        return array_merge(
-            parent::toArray(),
-            [
-                'bic' => $this->bic ?? null,
-                'benefName' => $this->benefName ?? null,
-                'benefStreet' => $this->benefStreet ?? null,
-                'benefCity' => $this->benefCity ?? null,
-                'benefCountry' => $this->benefCountry ?? null,
-                'remittanceInfo1' => $this->remittanceInfo1 ?? null,
-                'remittanceInfo2' => $this->remittanceInfo2 ?? null,
-                'remittanceInfo3' => $this->remittanceInfo3 ?? null
-            ]
-        );
+    protected function foreignPropertiesToArray(): array {
+        return [
+            static::BIC_NAME => $this->getBic(),
+            static::DATE_NAME => $this->getDate(),
+            static::COMMENT_NAME => $this->getComment(),
+            static::BENEF_NAME_NAME => $this->getBenefName(),
+            static::BENEF_STREET_NAME => $this->getBenefStreet(),
+            static::BENEF_CITY_NAME => $this->getBenefCity(),
+            static::BENEF_COUNTRY_NAME => $this->getBenefCountry(),
+            static::REMITTANCE_INFO_1_NAME => $this->getRemittanceInfo1(),
+            static::REMITTANCE_INFO_2_NAME => $this->getRemittanceInfo2(),
+            static::REMITTANCE_INFO_3_NAME => $this->getRemittanceInfo3(),
+        ];
+    }
+
+    public abstract function getBic(): ?string;
+
+    public abstract function getBenefStreet(): ?string;
+
+    public abstract function getBenefCity(): ?string;
+
+    public abstract function getBenefCountry(): ?string;
+
+    public abstract function getRemittanceInfo1(): ?string;
+
+    public function getBenefName(): string
+    {
+        return $this->benefName;
+    }
+
+    public function getRemittanceInfo2(): ?string
+    {
+        return $this->remittanceInfo2 ?? null;
+    }
+
+    public function getRemittanceInfo3(): ?string
+    {
+        return $this->remittanceInfo3 ?? null;
     }
 
     /** @return static */

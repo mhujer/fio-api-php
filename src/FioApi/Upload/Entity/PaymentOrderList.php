@@ -8,9 +8,13 @@ class PaymentOrderList
     /** @var PaymentOrder[] */
     protected array $paymentOrders = [];
 
-    public function addPaymentOrder(PaymentOrder $paymentOrder): void
+    /**
+     * @return static
+     */
+    public function addPaymentOrder(PaymentOrder $paymentOrder)
     {
         $this->paymentOrders[] = $paymentOrder;
+        return $this;
     }
 
     /**

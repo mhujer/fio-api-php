@@ -13,10 +13,25 @@ trait Symbols
 
     protected function symbolsToArray(): array {
         return [
-            'ks' => $this->constantSymbol ?? null,
-            'vs' => $this->variableSymbol ?? null,
-            'ss' => $this->specificSymbol ?? null,
+            'ks' => $this->getConstantSymbol(),
+            'vs' => $this->getVariableSymbol(),
+            'ss' => $this->getSpecificSymbol(),
         ];
+    }
+
+    public function getConstantSymbol(): ?string
+    {
+        return $this->constantSymbol ?? null;
+    }
+
+    public function getVariableSymbol(): ?string
+    {
+        return $this->variableSymbol ?? null;
+    }
+
+    public function getSpecificSymbol(): ?string
+    {
+        return $this->specificSymbol ?? null;
     }
 
     /** @return static */

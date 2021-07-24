@@ -7,6 +7,6 @@ use FioApi\Upload\Entity\PaymentOrderList;
 
 interface FileBuilder
 {
-    public static function getFileType(): string;
+    public function getFileType(): string;
     public function createFromPaymentOrderList(PaymentOrderList $paymentOrderList, string $accountFrom): string;
 }

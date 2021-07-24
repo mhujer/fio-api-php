@@ -72,10 +72,47 @@ class PaymentOrderEuro extends PaymentOrderForeign
         return array_merge(
             parent::toArray(),
             $this->symbolsToArray(),
+            $this->foreignPropertiesToArray(),
             [
-                'paymentType' => $this->paymentType ?? null
+                static::PAYMENT_REASON_NAME => $this->getPaymentReason(),
+                static::PAYMENT_TYPE_NAME => $this->getPaymentType(),
             ]
         );
+    }
+
+    public function getPaymentType(): ?int
+    {
+        return $this->paymentType ?? null;
+    }
+
+    public function getBic(): ?string
+    {
+        return $this->bic ?? null;
+    }
+
+    public function getBenefStreet(): ?string
+    {
+        return $this->benefStreet ?? null;
+    }
+
+    public function getBenefCity(): ?string
+    {
+        return $this->benefCity ?? null;
+    }
+
+    public function getBenefCountry(): ?string
+    {
+        return $this->benefCountry ?? null;
+    }
+
+    public function getRemittanceInfo1(): ?string
+    {
+        return $this->remittanceInfo1 ?? null;
+    }
+
+    public function getPaymentReason(): ?int
+    {
+        return $this->paymentReason ?? null;
     }
 
     /** @return static */

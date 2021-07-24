@@ -14,6 +14,8 @@ class PaymentOrderCzech extends PaymentOrder
     public const PAYMENT_TYPE_COLLECTION = 431022;
 
     protected const PAYMENT_TYPES = [self::PAYMENT_TYPE_STANDARD, self::PAYMENT_TYPE_PRIORITY, self::PAYMENT_TYPE_COLLECTION];
+    protected const BANK_CODE_NAME = 'bankCode';
+    protected const MESSAGE_FOR_RECIPIENT_NAME = 'messageForRecipient';
     protected const MESSAGE_FOR_RECIPIENT_MAX_LENGTH = 140;
     protected const BANK_CODE_LENGTH = 4;
 
@@ -61,13 +63,36 @@ class PaymentOrderCzech extends PaymentOrder
     public function toArray(): array {
         return array_merge(
             parent::toArray(),
+            [ static::BANK_CODE_NAME => $this->getBankCode() ],
             $this->symbolsToArray(),
             [
-                'bankCode' => $this->bankCode ?? null,
-                'messageForRecipient' => $this->messageForRecipient ?? null,
-                'paymentType' => $this->paymentType ?? null
+                static::DATE_NAME => $this->getDate(),
+                static::MESSAGE_FOR_RECIPIENT_NAME => $this->getMessageForRecipient(),
+                static::COMMENT_NAME => $this->getComment(),
+                static::PAYMENT_REASON_NAME => $this->getPaymentReason(),
+                static::PAYMENT_TYPE_NAME => $this->getPaymentType(),
             ]
         );
+    }
+
+    public function getBankCode(): string
+    {
+        return $this->bankCode;
+    }
+
+    public function getMessageForRecipient(): ?string
+    {
+        return $this->messageForRecipient ?? null;
+    }
+
+    public function getPaymentType(): ?int
+    {
+        return $this->paymentType ?? null;
+    }
+
+    public function getPaymentReason(): ?int
+    {
+        return $this->paymentReason ?? null;
     }
 
     /** @return static */

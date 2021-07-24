@@ -10,6 +10,8 @@ class PaymentOrderInternational extends PaymentOrderForeign
     public const CHARGES_SHA = 470503;
 
     protected const CHARGES_TYPES = [self::CHARGES_OUR, self::CHARGES_BEN, self::CHARGES_SHA];
+    protected const REMITTANCE_INFO_4_NAME = 'remittanceInfo4';
+    protected const DETAILS_OF_CHARGES_NAME = 'detailsOfCharges';
 
     protected int $detailsOfCharges;
     protected string $remittanceInfo4;
@@ -49,11 +51,53 @@ class PaymentOrderInternational extends PaymentOrderForeign
     public function toArray(): array {
         return array_merge(
             parent::toArray(),
+            $this->foreignPropertiesToArray(),
             [
-                'detailsOfCharges' => $this->detailsOfCharges ?? null,
-                'remittanceInfo4' => $this->remittanceInfo4 ?? null
+                static::REMITTANCE_INFO_4_NAME => $this->getRemittanceInfo4(),
+                static::DETAILS_OF_CHARGES_NAME => $this->getDetailsOfCharges(),
+                static::PAYMENT_REASON_NAME => $this->getPaymentReason(),
             ]
         );
+    }
+
+    public function getPaymentReason(): int
+    {
+        return $this->paymentReason;
+    }
+
+    public function getBic(): string
+    {
+        return $this->bic;
+    }
+
+    public function getBenefStreet(): string
+    {
+        return $this->benefStreet;
+    }
+
+    public function getBenefCity(): string
+    {
+        return $this->benefCity;
+    }
+
+    public function getBenefCountry(): string
+    {
+        return $this->benefCountry;
+    }
+
+    public function getDetailsOfCharges(): int
+    {
+        return $this->detailsOfCharges;
+    }
+
+    public function getRemittanceInfo1(): string
+    {
+        return $this->remittanceInfo1;
+    }
+
+    public function getRemittanceInfo4(): ?string
+    {
+        return $this->remittanceInfo4 ?? null;
     }
 
     /** @return static */

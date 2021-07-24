@@ -22,7 +22,7 @@ class UploadResponse
         return $this->xml;
     }
 
-    public function isOk(): bool
+    public function hasUploadSucceeded(): bool
     {
         return $this->getStatus() === self::SUCCESS;
     }
@@ -37,9 +37,10 @@ class UploadResponse
         return (int) $this->getResult()->errorCode;
     }
 
-    public function getIdInstruction(): int
+    public function getIdInstruction(): ?int
     {
-        return (int) $this->getResult()->idInstruction;
+        $idInstruction = $this->getResult()->idInstruction;
+        return empty($idInstruction) ? null : (int) $idInstruction;
     }
 
     protected function getResult(): SimpleXMLElement

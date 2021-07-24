@@ -7,6 +7,14 @@ use FioApi\Exceptions\UnexpectedPaymentOrderValueException;
 
 abstract class PaymentOrder
 {
+    protected const CURRENCY_NAME = 'currency';
+    protected const AMOUNT_NAME = 'amount';
+    protected const ACCOUNT_TO_NAME = 'accountTo';
+    protected const DATE_NAME = 'date';
+    protected const COMMENT_NAME = 'comment';
+    protected const PAYMENT_REASON_NAME = 'paymentReason';
+    protected const PAYMENT_TYPE_NAME = 'paymentType';
+
     protected const COMMENT_MAX_LENGTH = 255;
     protected const PAYMENT_REASON_MIN = 100;
     protected const PAYMENT_REASON_MAX = 999;
@@ -36,19 +44,43 @@ abstract class PaymentOrder
 
     public function toArray(): array {
         return [
-            'currency' => $this->currency ?? null,
-            'amount' => $this->amount ?? null,
-            'accountTo' => $this->accountTo ?? null,
-            'date' => $this->date ?? null,
-            'comment' => $this->comment ?? null,
-            'paymentReason' => $this->paymentReason ?? null,
+            static::CURRENCY_NAME => $this->getCurrency(),
+            static::AMOUNT_NAME => $this->getAmount(),
+            static::ACCOUNT_TO_NAME => $this->getAccountTo(),
         ];
+    }
+
+    public abstract function getPaymentReason(): ?int;
+
+    public function getCurrency(): string
+    {
+        return $this->currency;
+    }
+
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    public function getAccountTo(): string
+    {
+        return $this->accountTo;
+    }
+
+    public function getDate(): string
+    {
+        return $this->date;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment ?? null;
     }
 
     /** @return static */
     protected function setCurrency(string $currency)
     {
-        if (!preg_match('/[a-z]{3}/i', $currency)) {
+        if (!preg_match('/^[a-z]{3}$/i', $currency)) {
             throw new UnexpectedPaymentOrderValueException('Currency code has to match ISO 4217.');
         }
         $this->currency = strtoupper($currency);

@@ -1,17 +1,13 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi\Download;
-
-use FioApi\Download\Entity\Account;
-use FioApi\Download\Entity\Transaction;
-use FioApi\Download\Entity\TransactionList;
+namespace FioApi\Download\Entity;
 
 class TransactionListTest extends \PHPUnit\Framework\TestCase
 {
     public function testTransactionListValuesAreProperlySet()
     {
-        $transactionList = json_decode(file_get_contents(__DIR__ . '/data/example-response.json'));
+        $transactionList = json_decode(file_get_contents(__DIR__ . '/../data/example-response.json'));
 
         $transactionList = TransactionList::create($transactionList->accountStatement);
 
@@ -28,7 +24,7 @@ class TransactionListTest extends \PHPUnit\Framework\TestCase
 
     public function testEmptyTransactionList()
     {
-        $transactionList = json_decode(file_get_contents(__DIR__ . '/data/example-empty-response.json'));
+        $transactionList = json_decode(file_get_contents(__DIR__ . '/../data/example-empty-response.json'));
 
         $transactionList = TransactionList::create($transactionList->accountStatement);
 

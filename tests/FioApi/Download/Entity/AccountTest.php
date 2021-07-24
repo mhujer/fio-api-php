@@ -1,9 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi\Download;
-
-use FioApi\Download\Entity\Account;
+namespace FioApi\Download\Entity;
 
 class AccountTest extends \PHPUnit\Framework\TestCase
 {
