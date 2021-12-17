@@ -1,59 +1,22 @@
 <?php
 declare(strict_types = 1);
 
-namespace FioApi;
+namespace FioApi\Download;
 
+use FioApi\Download\Entity\TransactionList;
 use FioApi\Exceptions\InternalErrorException;
 use FioApi\Exceptions\TooGreedyException;
+use FioApi\Transferrer;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class Downloader
+class Downloader extends Transferrer
 {
-    /** @var UrlBuilder */
-    protected $urlBuilder;
-
-    /** @var \GuzzleHttp\Client */
-    protected $client;
-
-    /** @var string */
-    protected $certificatePath;
-
     public function __construct(
         string $token,
-        \GuzzleHttp\ClientInterface $client = null
+        ClientInterface $client = null
     ) {
-        $this->urlBuilder = new UrlBuilder($token);
-        $this->client = $client;
-    }
-
-    public function setCertificatePath(string $path)
-    {
-        $this->certificatePath = $path;
-    }
-
-    public function getCertificatePath(): string
-    {
-        if ($this->certificatePath) {
-            return $this->certificatePath;
-        }
-
-        if (class_exists('\Composer\CaBundle\CaBundle')) {
-            return \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath();
-        } elseif (class_exists('\Kdyby\CurlCaBundle\CertificateHelper')) {
-            return \Kdyby\CurlCaBundle\CertificateHelper::getCaInfoFile();
-        }
-
-        //Key downloaded from https://www.geotrust.com/resources/root-certificates/
-        return __DIR__ . '/keys/Geotrust_PCA_G3_Root.pem';
-    }
-
-    public function getClient(): ClientInterface
-    {
-        if (!$this->client) {
-            $this->client = new \GuzzleHttp\Client();
-        }
-        return $this->client;
+        parent::__construct($token, $client);
     }
 
     public function downloadFromTo(\DateTimeInterface $from, \DateTimeInterface $to): TransactionList

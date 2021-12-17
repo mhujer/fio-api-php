@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/mhujer/fio-api-php/version.png)](https://packagist.org/packages/mhujer/fio-api-php) [![Total Downloads](https://poser.pugx.org/mhujer/fio-api-php/downloads.png)](https://packagist.org/packages/mhujer/fio-api-php) [![License](https://poser.pugx.org/mhujer/fio-api-php/license.svg)](https://packagist.org/packages/mhujer/fio-api-php) [![Coverage Status](https://coveralls.io/repos/mhujer/fio-api-php/badge.svg?branch=master)](https://coveralls.io/r/mhujer/fio-api-php?branch=master)
 
-Fio bank REST API implementation in PHP. It allows you to download and iterate through account balance changes.
+Fio bank REST API implementation in PHP. It allows you to download and iterate through account balance changes. You can also upload payment orders.
 
 [There is a Symfony Bundle](https://github.com/mhujer/fio-api-bundle) for using this library in a Symfony app.
 
@@ -12,11 +12,13 @@ Usage
 2. Create a *token* in the ebanking (Nastavení / API)
 3. Use it according to the example bellow and check the docblocks
 
+### Download
+
 ```php
 <?php
 require_once 'vendor/autoload.php';
 
-$downloader = new FioApi\Downloader('TOKEN@todo');
+$downloader = new FioApi\Download\Downloader('TOKEN@todo');
 $transactionList = $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
 
 foreach ($transactionList->getTransactions() as $transaction) {
@@ -30,6 +32,22 @@ foreach ($transactionList->getTransactions() as $transaction) {
 - `downloadSince(DateTimeInterface $since): TransactionList`
 - `downloadLast(): TransactionList`
 - `setLastId(string $id)` - sets the last downloaded ID through the API
+
+### Upload
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+
+$uploader = new FioApi\Upload\Uploader('TOKEN@todo', 'accountFromWithoutBankCode@todo');
+$uploader->addPaymentOrder(new FioApi\Upload\Entity\PaymentOrderCzech(...$params));
+$response = $uploader->uploadPaymentOrders();
+if ($response->hasUploadSucceeded()) {
+    // ...
+}
+
+```
+
 
 Requirements
 ------------

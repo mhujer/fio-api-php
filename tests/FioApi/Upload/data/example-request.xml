@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Import xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://www.fio.cz/schema/importIB.xsd">
+    <Orders>
+        <DomesticTransaction>
+            <accountFrom>1234562</accountFrom>
+            <currency>CZK</currency>
+            <amount>100</amount>
+            <accountTo>2212-2000000699</accountTo>
+            <bankCode>0300</bankCode>
+            <ks>0558</ks>
+            <vs>1234567890</vs>
+            <ss>0987654321</ss>
+            <date>2021-07-22</date>
+            <messageForRecipient>message</messageForRecipient>
+            <comment>comment</comment>
+            <paymentReason>110</paymentReason>
+            <paymentType>431001</paymentType>
+        </DomesticTransaction>
+        <T2Transaction>
+            <accountFrom>1234562</accountFrom>
+            <currency>EUR</currency>
+            <amount>50.53</amount>
+            <accountTo>AT611904300234573201</accountTo>
+            <ks>0558</ks>
+            <vs>1234567890</vs>
+            <ss>0987654321</ss>
+            <bic>ABAGATWWXXX</bic>
+            <date>2021-07-22</date>
+            <comment>comment</comment>
+            <benefName>Hans Gruber</benefName>
+            <benefStreet>Gugitzgasse 2</benefStreet>
+            <benefCity>Wien</benefCity>
+            <benefCountry>AT</benefCountry>
+            <remittanceInfo1>info1</remittanceInfo1>
+            <remittanceInfo2>info2</remittanceInfo2>
+            <remittanceInfo3>info3</remittanceInfo3>
+            <paymentReason>520</paymentReason>
+            <paymentType>431008</paymentType>
+        </T2Transaction>
+        <ForeignTransaction>
+            <accountFrom>1234562</accountFrom>
+            <currency>USD</currency>
+            <amount>50.53</amount>
+            <accountTo>PK36SCBL0000001123456702</accountTo>
+            <bic>ALFHPKKAXXX</bic>
+            <date>2021-07-22</date>
+            <comment>comment</comment>
+            <benefName>Amir Khan</benefName>
+            <benefStreet>Nishtar Rd 13</benefStreet>
+            <benefCity>Karachi</benefCity>
+            <benefCountry>PK</benefCountry>
+            <remittanceInfo1>info1</remittanceInfo1>
+            <remittanceInfo2>info2</remittanceInfo2>
+            <remittanceInfo3>info3</remittanceInfo3>
+            <remittanceInfo4>info4</remittanceInfo4>
+            <detailsOfCharges>470502</detailsOfCharges>
+            <paymentReason>952</paymentReason>
+        </ForeignTransaction>
+    </Orders>
+</Import>

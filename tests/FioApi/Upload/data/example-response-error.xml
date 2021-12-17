@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<responseImport xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                xsi:noNamespaceSchemaLocation="https://www.fio.cz/schema/responseImportIB.xsd">
+    <result>
+        <errorCode>1</errorCode>
+        <status>error</status>
+        <sums>
+            <sum id="EUR">
+                <sumCredit>0</sumCredit>
+                <sumDebet>50</sumDebet>
+            </sum>
+        </sums>
+    </result>
+    <ordersDetails>
+        <detail id="1">
+            <messages>
+                <message status="error" errorCode="303">Chybný formát zadaného IBAN.</message>
+                <message status="error" errorCode="323">Adresa majitele účtu není kompletní</message>
+            </messages>
+        </detail>
+    </ordersDetails>
+</responseImport>
