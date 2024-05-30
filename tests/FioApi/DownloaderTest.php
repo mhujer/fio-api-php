@@ -90,7 +90,7 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
         /** @var \GuzzleHttp\Psr7\Request $request */
         $request = $container[0]['request'];
 
-        $this->assertSame('https://www.fio.cz/ib_api/rest/set-last-id/validToken/123456/', (string) $request->getUri());
+        $this->assertSame('https://fioapi.fio.cz/v1/rest/set-last-id/validToken/123456/', (string) $request->getUri());
     }
 
     public function testDownloaderSetCertificatePath()
