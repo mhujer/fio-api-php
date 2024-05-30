@@ -46,6 +46,9 @@ Martin Hujer - <https://www.martinhujer.cz>
 Changelog
 ----------
 
+## 4.2.0 (2024-05-30)
+- [#28](https://github.com/mhujer/fio-api-php/pull/28) use new Fio API URL (thx @feldsam!)
+
 ## 4.1.2 (2019-12-28)
 - [#19](https://github.com/mhujer/fio-api-php/pull/19) gracefully handle response with empty column8 (thx @fmasa!)
 
