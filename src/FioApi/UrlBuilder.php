@@ -5,7 +5,7 @@ use FioApi\Exceptions\MissingTokenException;
 
 class UrlBuilder
 {
-    const BASE_URL = 'https://www.fio.cz/ib_api/rest/';
+    const BASE_URL = 'https://fioapi.fio.cz/v1/rest/';
 
     /**
      * @var string
