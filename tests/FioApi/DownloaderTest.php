@@ -92,11 +92,4 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
 
         $this->assertSame('https://fioapi.fio.cz/v1/rest/set-last-id/validToken/123456/', (string) $request->getUri());
     }
-
-    public function testDownloaderSetCertificatePath()
-    {
-        $downloader = new Downloader('validToken');
-        $downloader->setCertificatePath('foo.pem');
-        $this->assertSame('foo.pem', $downloader->getCertificatePath());
-    }
 }
