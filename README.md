@@ -46,6 +46,9 @@ Martin Hujer - <https://www.martinhujer.cz>
 Changelog
 ----------
 
+## 5.0.0 (2024-06-07)
+- [#31](https://github.com/mhujer/fio-api-php/pull/31) add `composer/ca-bundle` as a required dependency instead of bundled root cert (thx @feldsam!)
+
 ## 4.2.0 (2024-05-30)
 - [#28](https://github.com/mhujer/fio-api-php/pull/28) use new Fio API URL (thx @feldsam!)
 
