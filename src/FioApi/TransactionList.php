@@ -55,7 +55,7 @@ class TransactionList
     /**
      * @param Transaction $transaction
      */
-    protected function addTransaction(Transaction $transaction)
+    protected function addTransaction(Transaction $transaction): void
     {
         $this->transactions[] = $transaction;
     }

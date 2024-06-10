@@ -16,7 +16,7 @@ class Downloader
     /** @var UrlBuilder */
     protected $urlBuilder;
 
-    /** @var Client */
+    /** @var ?ClientInterface */
     protected $client;
 
     public function __construct(string $token, ClientInterface $client = null)
@@ -27,7 +27,7 @@ class Downloader
 
     public function getClient(): ClientInterface
     {
-        if (!$this->client) {
+        if ($this->client === null) {
             $this->client = new Client([
                 RequestOptions::VERIFY => CaBundle::getSystemCaRootBundlePath()
             ]);
@@ -67,9 +67,10 @@ class Downloader
     private function downloadTransactionsList(string $url): TransactionList
     {
         $client = $this->getClient();
+        /** @var ?ResponseInterface $response */
+        $response = null;
 
         try {
-            /** @var ResponseInterface $response */
             $response = $client->request('get', $url);
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
             $this->handleException($e);

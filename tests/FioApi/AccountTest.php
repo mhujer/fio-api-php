@@ -5,7 +5,7 @@ namespace FioApi;
 
 class AccountTest extends \PHPUnit\Framework\TestCase
 {
-    public function testAccountValuesAreProperlySet()
+    public function testAccountValuesAreProperlySet(): void
     {
         $account = new Account(
             '214498596',

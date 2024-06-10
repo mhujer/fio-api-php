@@ -5,7 +5,7 @@ namespace FioApi;
 
 class TransactionListTest extends \PHPUnit\Framework\TestCase
 {
-    public function testTransactionListValuesAreProperlySet()
+    public function testTransactionListValuesAreProperlySet(): void
     {
         $transactionList = json_decode(file_get_contents(__DIR__ . '/data/example-response.json'));
 
@@ -22,7 +22,7 @@ class TransactionListTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Transaction::class, $transactionList->getTransactions()[0]);
     }
 
-    public function testEmptyTransactionList()
+    public function testEmptyTransactionList(): void
     {
         $transactionList = json_decode(file_get_contents(__DIR__ . '/data/example-empty-response.json'));
 

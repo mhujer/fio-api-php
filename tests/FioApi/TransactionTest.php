@@ -5,7 +5,7 @@ namespace FioApi;
 
 class TransactionTest extends \PHPUnit\Framework\TestCase
 {
-    public function testAccountValuesAreProperlySet()
+    public function testAccountValuesAreProperlySet(): void
     {
         $transaction = json_decode(file_get_contents(__DIR__ . '/data/example-transaction.json'));
 
