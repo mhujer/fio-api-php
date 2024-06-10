@@ -7,7 +7,7 @@ class TransactionTest extends \PHPUnit\Framework\TestCase
 {
     public function testAccountValuesAreProperlySet(): void
     {
-        $transaction = json_decode(file_get_contents(__DIR__ . '/data/example-transaction.json'));
+        $transaction = json_decode((string) file_get_contents(__DIR__ . '/data/example-transaction.json'));
 
         $transaction = Transaction::create($transaction);
 

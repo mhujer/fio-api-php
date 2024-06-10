@@ -51,7 +51,7 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
     public function testDownloaderDownloadsData(): void
     {
         $handler = HandlerStack::create(new MockHandler([
-            new Response(200, [], file_get_contents(__DIR__ . '/data/example-response.json')),
+            new Response(200, [], (string) file_get_contents(__DIR__ . '/data/example-response.json')),
         ]));
         $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
 
@@ -63,7 +63,7 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
     public function testDownloaderDownloadsLast(): void
     {
         $handler = HandlerStack::create(new MockHandler([
-            new Response(200, [], file_get_contents(__DIR__ . '/data/example-response.json')),
+            new Response(200, [], (string) file_get_contents(__DIR__ . '/data/example-response.json')),
         ]));
         $downloader = new Downloader('validToken', new Client(['handler' => $handler]));
 

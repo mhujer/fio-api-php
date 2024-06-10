@@ -17,13 +17,13 @@ class TransactionList
     /** @var \DateTimeImmutable */
     protected $dateEnd;
 
-    /** @var float */
+    /** @var float|null */
     protected $idFrom;
 
-    /** @var float */
+    /** @var float|null */
     protected $idTo;
 
-    /** @var int */
+    /** @var int|null */
     protected $idLastDownload;
 
     /** @var Account */

@@ -42,6 +42,6 @@
     ],
     "test": "phpunit",
     "phpcs": "phpcs --standard=PSR2 src && phpcs --standard=PSR2 tests",
-    "phpstan": "phpstan analyse -l 6 src tests"
+    "phpstan": "phpstan analyse -l 8 src tests"
   }
 }
