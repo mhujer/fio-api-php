@@ -22,7 +22,7 @@ class UrlBuilder
         return $this->token;
     }
 
-    public function setToken(string $token)
+    public function setToken(string $token): void
     {
         if (!$token) {
             throw new MissingTokenException(
