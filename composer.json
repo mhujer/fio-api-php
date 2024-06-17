@@ -27,11 +27,18 @@
   "require-dev": {
     "phpunit/phpunit": "9.5.10",
     "squizlabs/php_codesniffer": "3.6.1",
-    "phpstan/phpstan": "^1.11"
+    "phpstan/phpstan": "1.11.5",
+    "phpstan/phpstan-phpunit": "1.4.0",
+    "phpstan/phpstan-strict-rules": "1.6.0"
   },
   "autoload": {
     "psr-4": {
       "FioApi\\": "src/FioApi"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "FioApi\\": "tests/FioApi"
     }
   },
   "scripts": {
@@ -42,6 +49,6 @@
     ],
     "test": "phpunit",
     "phpcs": "phpcs --standard=PSR2 src && phpcs --standard=PSR2 tests",
-    "phpstan": "phpstan analyse -l 8 src tests"
+    "phpstan": "phpstan analyse -c phpstan.neon"
   }
 }

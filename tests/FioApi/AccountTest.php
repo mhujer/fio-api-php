@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace FioApi;
 
+use PHPUnit\Framework\Assert;
+
 class AccountTest extends \PHPUnit\Framework\TestCase
 {
     public function testAccountValuesAreProperlySet(): void
@@ -14,10 +16,10 @@ class AccountTest extends \PHPUnit\Framework\TestCase
             'CZ9820100000000214498596',
             'FIOBCZPPXXX'
         );
-        $this->assertSame('214498596', $account->getAccountNumber());
-        $this->assertSame('2010', $account->getBankCode());
-        $this->assertSame('CZK', $account->getCurrency());
-        $this->assertSame('CZ9820100000000214498596', $account->getIban());
-        $this->assertSame('FIOBCZPPXXX', $account->getBic());
+        Assert::assertSame('214498596', $account->getAccountNumber());
+        Assert::assertSame('2010', $account->getBankCode());
+        Assert::assertSame('CZK', $account->getCurrency());
+        Assert::assertSame('CZ9820100000000214498596', $account->getIban());
+        Assert::assertSame('FIOBCZPPXXX', $account->getBic());
     }
 }
