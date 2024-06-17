@@ -8,6 +8,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\Assert;
 
 class DownloaderTest extends \PHPUnit\Framework\TestCase
 {
@@ -57,7 +58,7 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
 
         $transactionList = $downloader->downloadSince(new \DateTimeImmutable('-1 week'));
 
-        $this->assertInstanceOf(TransactionList::class, $transactionList);
+        Assert::assertCount(3, $transactionList->getTransactions());
     }
 
     public function testDownloaderDownloadsLast(): void
@@ -69,7 +70,7 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
 
         $transactionList = $downloader->downloadLast();
 
-        $this->assertInstanceOf(TransactionList::class, $transactionList);
+        Assert::assertCount(3, $transactionList->getTransactions());
     }
 
     public function testDownloaderSetsLastId(): void
@@ -85,11 +86,11 @@ class DownloaderTest extends \PHPUnit\Framework\TestCase
 
         $downloader->setLastId('123456');
 
-        $this->assertCount(1, $container);
+        Assert::assertCount(1, $container);
 
         /** @var \GuzzleHttp\Psr7\Request $request */
         $request = $container[0]['request'];
 
-        $this->assertSame('https://fioapi.fio.cz/v1/rest/set-last-id/validToken/123456/', (string) $request->getUri());
+        Assert::assertSame('https://fioapi.fio.cz/v1/rest/set-last-id/validToken/123456/', (string) $request->getUri());
     }
 }

@@ -110,20 +110,20 @@ class Transaction
             new \DateTimeImmutable($data->column0->value), //Datum
             $data->column1->value, //Objem
             $data->column14->value, //Měna
-            !empty($data->column2) ? $data->column2->value : null, //Protiúčet
-            !empty($data->column3) ? $data->column3->value : null, //Kód banky
-            !empty($data->column12) ? $data->column12->value : null, //Název banky
-            !empty($data->column10) ? $data->column10->value : null, //Název protiúčtu
-            !empty($data->column4) ? $data->column4->value : null, //KS
-            !empty($data->column5) ? $data->column5->value : null, //VS
-            !empty($data->column6) ? $data->column6->value : null, //SS
-            !empty($data->column7) ? $data->column7->value : null, //Uživatelská identifikace
-            !empty($data->column16) ? $data->column16->value : null, //Zpráva pro příjemce
-            !empty($data->column8) ? $data->column8->value : '', //Typ
-            !empty($data->column9) ? $data->column9->value : null, //Provedl
-            !empty($data->column25) ? $data->column25->value : null, //Komentář
-            !empty($data->column17) ? $data->column17->value : null, //ID pokynu
-            !empty($data->column18) ? $data->column18->value : null //Upřesnění
+            $data->column2 !== null ? $data->column2->value : null, //Protiúčet
+            $data->column3 !== null ? $data->column3->value : null, //Kód banky
+            $data->column12 !== null ? $data->column12->value : null, //Název banky
+            $data->column10 !== null ? $data->column10->value : null, //Název protiúčtu
+            $data->column4 !== null ? $data->column4->value : null, //KS
+            $data->column5 !== null ? $data->column5->value : null, //VS
+            $data->column6 !== null ? $data->column6->value : null, //SS
+            $data->column7 !== null ? $data->column7->value : null, //Uživatelská identifikace
+            $data->column16 !== null ? $data->column16->value : null, //Zpráva pro příjemce
+            $data->column8 !== null ? $data->column8->value : '', //Typ
+            $data->column9 !== null ? $data->column9->value : null, //Provedl
+            $data->column25 !== null ? $data->column25->value : null, //Komentář
+            $data->column17 !== null ? $data->column17->value : null, //ID pokynu
+            $data->column18 !== null ? $data->column18->value : null //Upřesnění
         );
     }
 

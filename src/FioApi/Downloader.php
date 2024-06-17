@@ -66,21 +66,15 @@ class Downloader
         }
     }
 
-    /**
-     * @param string $url
-     * @return TransactionList
-     */
     private function downloadTransactionsList(string $url): TransactionList
     {
         $client = $this->getClient();
         $transactions = null;
 
         try {
-            /** @var ?ResponseInterface $response */
             $response = $client->request('get', $url);
-            if ($response) {
-                $transactions = json_decode($response->getBody()->getContents())->accountStatement;
-            }
+            $jsonData = json_decode($response->getBody()->getContents(), null, 512, JSON_THROW_ON_ERROR);
+            $transactions = $jsonData->accountStatement;
         } catch (BadResponseException $e) {
             $this->handleException($e);
         }
